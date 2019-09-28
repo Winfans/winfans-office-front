@@ -19,7 +19,6 @@
         font-family: 'Avenir', Helvetica, Arial, sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-        color: #2c3e50;
         height: 100%;
     }
 
@@ -62,6 +61,49 @@
                 cursor: pointer;
                 &:hover {
                     color: #409EFF;
+                }
+            }
+        }
+    }
+
+    // Search页面
+    .el-card.el-card-search {
+        .el-card__header {
+            background: #F2F6FC;
+        }
+    }
+
+    // Login页面
+    .el-card.el-card-login {
+        .el-card__header {
+            background: #409EFF;
+        }
+    }
+
+    // CRM
+    .el-card.el-card-client {
+        .el-card__header {
+            background: #F6F6F6;
+            /*height: 60px;*/
+            padding: 10px 20px;
+
+        }
+        .el-input__inner {
+            height: 35px;
+            line-height: 35px;
+        }
+        .el-table {
+            .el-table__header {
+                .cell {
+                    color: #000;
+                }
+            }
+            .el-table__body {
+                .cell {
+                    font-size: 14px;
+                    line-height: 14px;
+                    height: 10px;
+                    overflow: visible;
                 }
             }
         }

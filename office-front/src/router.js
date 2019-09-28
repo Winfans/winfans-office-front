@@ -1,8 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './views/index/Home.vue'
 
-Vue.use(Router)
+Vue.use(Router);
 
 export default new Router({
     mode: 'history',
@@ -20,6 +19,10 @@ export default new Router({
         {
             path: '/index',
             name: 'index',
+            meta:  {
+                login: true
+            },
+            redirect: '/index/home',
             component: () => import('./views/Index'),
             children: [
                 // 首页
@@ -34,11 +37,38 @@ export default new Router({
                     name: 'me',
                     component: () => import('./views/index/Me'),
                 },
+                // 团队
+                {
+                    path: 'team',
+                    name: 'team',
+                    component: () => import('./views/index/Team'),
+                },
                 // 发现
                 {
                     path: 'search',
                     name: 'search',
                     component: () => import('./views/index/Search'),
+                },
+                // 创建团队
+                {
+                    path: 'attend/:submenuId',
+                    name: 'attend',
+                    component: () => import('./views/index/search/Attend'),
+                },
+                // crm
+                {
+                    path: 'crm',
+                    name: 'crm',
+                    component: () => import('./views/index/search/Crm'),
+                    redirect: 'crm/client',
+                    children: [
+                        // 客户
+                        {
+                            path: 'client',
+                            name: 'client',
+                            component: () => import('./views/index/search/crm/Client'),
+                        },
+                    ]
                 },
                 // 帮助
                 {
@@ -48,19 +78,19 @@ export default new Router({
                 },
             ]
         },
+
+        // 登录
+        {
+            path: '/login',
+            name: 'login',
+            component: () => import('./views/Login'),
+        },
+
         // 没有找到
         {
             path: '/notFound',
             name: 'notFound',
             component: () => import('./views/NotFound'),
         },
-        // {
-        //   path: '/about',
-        //   name: 'about',
-        //   // route level code-splitting
-        //   // this generates a separate chunk (about.[hash].js) for this route
-        //   // which is lazy-loaded when the route is visited.
-        //   component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
-        // }
     ]
 })
