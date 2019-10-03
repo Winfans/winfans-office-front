@@ -1,28 +1,30 @@
 <template>
-    <div class="login">
+    <div id="login">
+        <ShootingStar></ShootingStar>
         <el-card class="box-card el-card-login">
             <div slot="header" class="clearfix">
-                <span class="font-color-fff">用户登录</span>
+                <span class="font-color-fff bg_color_transparent">用户登录</span>
             </div>
             <el-form ref="form" :model="form">
                 <el-form-item>
-                    <el-input v-model="form.userName" placeholder="用户名"></el-input>
+                    <el-input v-model="form.userName" placeholder="用户名" prefix-icon="el-icon-user"></el-input>
                 </el-form-item>
                 <el-form-item>
-                    <el-input v-model="form.userPasswd" placeholder="密码" show-password></el-input>
+                    <el-input v-model="form.userPasswd" placeholder="密码" show-password prefix-icon="el-icon-lock"></el-input>
                 </el-form-item>
                 <el-form-item>
                     <el-button type="primary" style="width: 100%;" @click="onLogin">登录</el-button>
                 </el-form-item>
-
             </el-form>
         </el-card>
     </div>
 </template>
 
 <script>
+    import ShootingStar from "../components/ShootingStar";
     export default {
         name: "Login",
+        components: {ShootingStar},
         data() {
             return {
                 form: {
@@ -77,8 +79,14 @@
 <style scoped lang="less">
     @import "../assets/less/initial";
 
-    .login {
+    #login {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
         .box-card {
+            background-color: transparent;
+            border: none;
             width: 400px;
             position: absolute;
             top: calc(50% - 200px);

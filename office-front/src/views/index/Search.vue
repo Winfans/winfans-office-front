@@ -60,6 +60,7 @@
                 spinner: 'el-icon-loading',
                 background: 'rgba(0, 0, 0, 0.2)',
             });
+
             this.axios.get('/menu/findAllMenu').then(res => {
                 this.menus = res.data.data;
                 loading.close();

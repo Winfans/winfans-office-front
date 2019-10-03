@@ -11,26 +11,10 @@
                 <el-menu-item index="/index/home">
                     <i class="el-icon-house font-size-22 hover-color-409EFF"></i>
                 </el-menu-item>
-                <!--<el-popover-->
-                <!--placement="right-end"-->
-                <!--trigger="hover"-->
-                <!--popper-class="menu-el-popover"-->
-                <!--content="首页">-->
-                <!--<el-menu-item index="/index/me" slot="reference">-->
-                <!--<i class="el-icon-user i-font-size-22 i-hover"></i>-->
-                <!--</el-menu-item>-->
-                <!--</el-popover>-->
-
-                <el-menu-item index="/index/team">
-                    <i class="iconfont icon-tuandui font-size-22 hover-color-409EFF"></i>
-                </el-menu-item>
 
                 <el-menu-item index="/index/search">
                     <i class="el-icon-search font-size-22 hover-color-409EFF"></i>
                 </el-menu-item>
-
-
-
 
                 <el-menu-item index="/index/help">
                     <i class="el-icon-headset font-size-22 hover-color-409EFF"></i>

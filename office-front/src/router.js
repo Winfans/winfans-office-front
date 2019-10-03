@@ -11,7 +11,7 @@ export default new Router({
             path: '*',
             redirect(to) {
                 if (to.path === '/') {
-                    return '/index/home'
+                    return '/login'
                 }
             }
         },

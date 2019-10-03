@@ -87,6 +87,10 @@ module.exports = {
                 target: 'http://localhost:12649',
                 changeOrigin: true
             },
+            '/team': {
+                target: 'http://localhost:12649',
+                changeOrigin: true
+            },
         },
         // pluginOptions: {}
     }

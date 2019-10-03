@@ -54,13 +54,13 @@
             });
 
             this.axios.get('/menu/findAllSubmenu').then(res => {
-                    loading.close();
-                    this.submenus = res.data.data;
-                }).then(() => {
-                    const submenuId = parseInt(this.$route.params.submenuId);
-                    const index = this.submenus.findIndex(item => item.submenuId === submenuId);
-                    this.submenu = this.submenus[index];
-                })
+                loading.close();
+                this.submenus = res.data.data;
+            }).then(() => {
+                const submenuId = parseInt(this.$route.params.submenuId);
+                const index = this.submenus.findIndex(item => item.submenuId === submenuId);
+                this.submenu = this.submenus[index];
+            })
                 .catch(() => {
                     loading.close();
                     this.$message({
@@ -92,26 +92,31 @@
                         submenuId: this.$route.params.submenuId,
                         teamName: this.form.teamName,
                     };
-                    this.$axios.post('/team/createTeam', this.$qs.stringify(data)).then(() => {
+                    if (this.submenu.homePath) {
+                        this.$axios.post('/team/createTeam', this.$qs.stringify(data)).then(() => {
+                            loading.close();
+                            this.$alert('创建成功', '', {
+                                type: 'success',
+                                confirmButtonText: '确定',
+                            });
+                            this.$router.push({
+                                name: this.submenu.homePath
+                            });
 
-                        loading.close();
-
-                        this.$alert('创建成功', '', {
-                            type: 'success',
-                            confirmButtonText: '确定',
+                        }).catch(() => {
+                            loading.close();
+                            this.$alert('创建失败', '', {
+                                type: 'error',
+                                confirmButtonText: '确定',
+                            });
                         });
-
-                        this.$route.push({
-
-                        });
-
-                    }).catch(() => {
+                    } else {
                         loading.close();
                         this.$alert('创建失败', '', {
                             type: 'error',
                             confirmButtonText: '确定',
                         });
-                    })
+                    }
                 }
             },
             onCancel() {

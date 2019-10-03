@@ -16,7 +16,7 @@
 
     // 初始化
     #app {
-        font-family: 'Avenir', Helvetica, Arial, sans-serif;
+        font-family: "Hiragino Sans GB";
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         height: 100%;
@@ -76,7 +76,27 @@
     // Login页面
     .el-card.el-card-login {
         .el-card__header {
-            background: #409EFF;
+            background: transparent;
+        }
+        .el-card__body {
+            .el-input__inner {
+                background: transparent;
+                border: 1px solid rgba(255,255,255,.2);
+                color: #fff;
+                &:hover {
+                    transition: all .1s ease;
+                    border: 1px solid #fff;
+                }
+
+            }
+            .el-button--primary {
+                background: transparent;
+                border: 1px solid rgba(255,255,255,.2);
+                &:hover {
+                    transition: all .1s ease;
+                    border: 1px solid #fff;
+                }
+            }
         }
     }
 
