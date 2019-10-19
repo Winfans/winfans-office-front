@@ -1,6 +1,6 @@
 <template>
     <div id="attend">
-        <el-card class="box-card horizontal-center">
+        <el-card class="box-card horizontal-center"  style="margin-top: 100px;">
             <div slot="header" class="clearfix">
 
                 <div class="submenu-name-logo bg-color-logo inline-block font-size-18">{{submenu.submenuName}}
@@ -100,7 +100,7 @@
                                 confirmButtonText: '确定',
                             });
                             this.$router.push({
-                                name: this.submenu.homePath
+                                name: 'Home'
                             });
 
                         }).catch(() => {

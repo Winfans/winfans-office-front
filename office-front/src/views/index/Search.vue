@@ -77,7 +77,7 @@
         methods: {
             createTeam(submenuId) {
                 this.$router.push({
-                    name: 'attend',
+                    name: 'Attend',
                     params: {
                         submenuId: submenuId
                     },
@@ -92,6 +92,8 @@
     @import "../../assets/less/initial";
 
     #search {
+        width: 95%;
+        margin: 25px auto;
         .box-card {
             width: 100%;
             .card {

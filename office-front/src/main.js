@@ -4,9 +4,14 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import './registerServiceWorker'
+import ElementUI from 'element-ui'
 import './plugins/element.js'
 import './assets/iconfont/iconfont.css'
 import qs from 'qs'
+import moment from 'moment'
+
+
+
 
 
 
@@ -14,25 +19,31 @@ Vue.config.productionTip = false;
 
 Vue.prototype.BASE_URL = "http://localhost:12649";
 Vue.prototype.$qs = qs;
+Vue.prototype.$moment = moment;
 
-//
-// router.beforeEach((to, from, next) => {
-//     const needLogin = to.matched.some(route => route.meta && route.meta.login);
-//     if (needLogin) {
-//         const isLogin = document.cookie.includes('login=true');
-//         if (isLogin) {
-//             next();
-//             return;
-//         }
-//         const toLoginFlag = window.confirm('该页面需要登录后才能访问，是否登录？')
-//         if (toLoginFlag) {
-//             next('/login');
-//         }
-//         return;
-//     }
-//     next();
-// });
 
+router.beforeEach((to, from, next) => {
+    const needLogin = to.matched.some(route => route.meta && route.meta.login);
+    if (needLogin) {
+        const isLogin = document.cookie.includes('b0ad13e59c636ca3709e2622089f7718=aba56d95f20f3726d74cd5e37da00efd');
+        if (isLogin) {
+            next();
+            return;
+        }
+        ElementUI.MessageBox({
+            message: '该页面需要登录后才能访问，是否登录？',
+            title: '提示',
+            showConfirmButton: true,
+            showCancelButton: true,
+            type: 'warning'
+        }).then(() => {
+            next('/login');
+        }).catch(() => {
+        });
+        return;
+    }
+    next();
+});
 
 
 new Vue({

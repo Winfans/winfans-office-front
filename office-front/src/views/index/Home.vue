@@ -16,20 +16,32 @@
         </el-card>
         <div class="team-list" v-else>
             <el-row :gutter="20">
-                <el-col :span="6" style="padding-bottom: 15px;" v-for="team in teams" :key="team.teamId">
-                    <el-card class="team-card">
+                <el-col :span="6" style="padding-bottom: 15px;" v-for="team in teams" :key="team.teamId"
+                        @click.native="goToHomePath(team.homePath, team.subPath, team.teamId)">
+                    <el-card class="team-card" @mouseenter.native="isShowClose = true" @mouseleave.native="isShowClose = false">
+                        <i class="el-icon-close font-color-409EFF" v-show="isShowClose" @click.stop="leaveTeamClick"></i>
                         <div class="logo" :style="{backgroundColor: team.submenuIconBgColor}">
                             {{team.submenuName}}
                         </div>
                         <span class="logo-title">{{team.teamName}}</span>
                     </el-card>
+                    <el-dialog title="退出团队" :visible.sync="isShowDialog" >
+                        <span>团队编号：</span>
+                        <el-divider></el-divider>
+                        <span>团队名称：</span>
+                        <el-divider></el-divider>
+                        <span>创建日期：</span>
+                        <el-divider></el-divider>
+                        <span>管理员：</span>
+                        <el-divider></el-divider>
+                    </el-dialog>
                 </el-col>
-                <el-col :span="6" style="padding-bottom: 15px;">
+                <el-col :span="6" style="padding-bottom: 15px;" @click.native="createNewTeam">
                     <el-card class="team-card">
                         <div class="add-team">
                             +
                         </div>
-                        <span class="logo-title" @click="createNewTeam">创建新团队</span>
+                        <span class="logo-title">创建新团队</span>
                     </el-card>
                 </el-col>
             </el-row>
@@ -43,19 +55,35 @@
         name: "Home",
         data() {
             return {
-                toSearch: '/index/search',
-                hasTeam: false,
-                teams: [],
-                teamIds: [],
+                toSearch: '/index/search', // 跳转路径
+                hasTeam: false, // 是否有团队
+                teams: [], // 团队
+                isShowClose: false, // 是否显示关闭图标
+                isShowDialog: false, // 是否显示退出团队的对话框
 
             }
         },
         methods: {
             createNewTeam() {
                 this.$router.push({
-                    name: 'search',
+                    name: 'Search',
                 });
-            }
+            },
+            // 点击团队跳转相对应的页面
+            goToHomePath(homePath, subPath, teamId) {
+                if (homePath === '') {
+                    homePath = 'NotFound'
+                }
+                this.$router.push({
+                    path: '/index/' + homePath + '/' + teamId + '/' + subPath ,
+                })
+            },
+            // 点击退出团队
+            leaveTeamClick () {
+                // this.isShowDialog = true;
+                alert("test")
+            },
+
         },
         created() {
 
@@ -112,7 +140,14 @@
             margin: 20px auto 0;
             .team-card {
                 height: 85px;
+                position: relative;
                 cursor: pointer;
+                .el-icon-close {
+                    position: absolute;
+                    right: 4px;
+                    top: 2px;
+                    font-size: 12px;
+                }
                 .logo {
                     display: inline-block;
                     width: 45px;
@@ -121,6 +156,7 @@
                     text-align: center;
                     line-height: 45px;
                     color: #fff;
+
                 }
                 .logo-title {
                     padding-left: 10px;

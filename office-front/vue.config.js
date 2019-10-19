@@ -78,6 +78,7 @@ module.exports = {
         hot: true, //热加载
         host: '0.0.0.0', //ip地址
         port: 8080,//端口
+        disableHostCheck: true,
         proxy: {
             '/menu': {
                 target: 'http://localhost:12649',
@@ -88,6 +89,18 @@ module.exports = {
                 changeOrigin: true
             },
             '/team': {
+                target: 'http://localhost:12649',
+                changeOrigin: true
+            },
+            '/user': {
+                target: 'http://localhost:12649',
+                changeOrigin: true
+            },
+            '/customer': {
+                target: 'http://localhost:12649',
+                changeOrigin: true
+            },
+            '/written': {
                 target: 'http://localhost:12649',
                 changeOrigin: true
             },

@@ -10,18 +10,25 @@
                     <el-input v-model="form.userName" placeholder="用户名" prefix-icon="el-icon-user"></el-input>
                 </el-form-item>
                 <el-form-item>
-                    <el-input v-model="form.userPasswd" placeholder="密码" show-password prefix-icon="el-icon-lock"></el-input>
+                    <el-input v-model="form.userPasswd" placeholder="密码" show-password
+                              prefix-icon="el-icon-lock"></el-input>
                 </el-form-item>
                 <el-form-item>
-                    <el-button type="primary" style="width: 100%;" @click="onLogin">登录</el-button>
+                    <el-button type="primary" style="width: 100%;" @click="loginClick">登录</el-button>
                 </el-form-item>
             </el-form>
+            <div class="bottom" style="float: right;">
+                <el-button type="text"  style="color:#999;">忘记密码？</el-button>
+                <el-button type="text"  style="color:#999;" @click="goToRegisterClick">新用户</el-button>
+            </div>
         </el-card>
     </div>
 </template>
 
 <script>
     import ShootingStar from "../components/ShootingStar";
+
+
     export default {
         name: "Login",
         components: {ShootingStar},
@@ -34,7 +41,7 @@
             }
         },
         methods: {
-            onLogin() {
+            loginClick() {
                 if (this.form.userName === '') {
                     this.$alert('用户名不能为空', '', {
                         type: 'error',
@@ -60,7 +67,7 @@
                     this.$axios.post('/auth/auth', this.$qs.stringify(data)).then(() => {
                         loading.close();
                         this.$router.push({
-                            name: 'index',
+                            name: 'Index',
                         })
                     }).catch(() => {
                         loading.close();
@@ -72,6 +79,9 @@
                 }
 
             },
+            goToRegisterClick() {
+                this.$router.push('/register');
+            }
         }
     }
 </script>

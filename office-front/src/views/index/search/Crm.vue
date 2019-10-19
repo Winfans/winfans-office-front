@@ -1,57 +1,37 @@
 <template>
     <div id="crm">
         <el-container>
-            <el-header>
+            <el-header class="el-crm">
                 <el-menu
-                        :default-active="activeIndex"
+                        router
+                        :default-active="this.$route.path"
                         class="el-menu"
                         mode="horizontal"
                         background-color="#303133"
                         text-color="#fff"
                         active-text-color="#409EFF">
-                    <el-menu-item index="1">
+                    <el-menu-item :index="prefixPath +'/client'">
                         <span class="hover-color-409EFF">客户</span>
                     </el-menu-item>
-                    <el-menu-item index="2">
-                        <span class="hover-color-409EFF">线索</span>
-                    </el-menu-item>
-                    <el-menu-item index="3">
+                    <el-menu-item :index="prefixPath +'/writtenRecords'">
                         <span class="hover-color-409EFF">签单记录</span>
                     </el-menu-item>
-                    <el-menu-item index="4">
+                    <el-menu-item :index="prefixPath +'/contactRecords'">
                         <span class="hover-color-409EFF">联系记录</span>
                     </el-menu-item>
-                    <el-submenu index="5">
+                    <el-submenu index="1">
                         <template slot="title">待办提醒</template>
-                        <el-menu-item index="2-1">选项1</el-menu-item>
-                        <el-menu-item index="2-2">选项2</el-menu-item>
-                        <el-menu-item index="2-3">选项3</el-menu-item>
-                        <el-submenu index="2-4">
-                            <template slot="title">选项4</template>
-                            <el-menu-item index="2-4-1">选项1</el-menu-item>
-                            <el-menu-item index="2-4-2">选项2</el-menu-item>
-                            <el-menu-item index="2-4-3">选项3</el-menu-item>
-                        </el-submenu>
+                        <!--<el-menu-item index="/index/crm/remind">选项1</el-menu-item>-->
+                        <!--<el-menu-item index="/index/crm/remind">选项2</el-menu-item>-->
+                        <!--<el-menu-item index="/index/crm/remind">选项3</el-menu-item>-->
                     </el-submenu>
-                    <el-menu-item index="6">
+                    <el-menu-item :index="prefixPath +'/reportForm'">
                         <span class="hover-color-409EFF">报表</span>
                     </el-menu-item>
-                    <el-submenu index="7">
-                        <template slot="title">基础设置</template>
-                        <el-menu-item index="2-1">选项1</el-menu-item>
-                        <el-menu-item index="2-2">选项2</el-menu-item>
-                        <el-menu-item index="2-3">选项3</el-menu-item>
-                        <el-submenu index="2-4">
-                            <template slot="title">选项4</template>
-                            <el-menu-item index="2-4-1">选项1</el-menu-item>
-                            <el-menu-item index="2-4-2">选项2</el-menu-item>
-                            <el-menu-item index="2-4-3">选项3</el-menu-item>
-                        </el-submenu>
-                    </el-submenu>
-                    <el-menu-item index="8">
+                    <el-menu-item :index="prefixPath +'/user'">
                         <span class="hover-color-409EFF">用户</span>
                     </el-menu-item>
-                    <el-menu-item index="9">
+                    <el-menu-item :index="prefixPath +'/setting'">
                         <span class="hover-color-409EFF">设置</span>
                     </el-menu-item>
                 </el-menu>
@@ -69,11 +49,11 @@
         name: "Crm",
         data() {
             return {
-                activeIndex: '1',
+                prefixPath: '/index/crm/' + this.$route.params.id,
+                activeIndex: '/index/crm/client',
             };
         },
-        methods: {
-        }
+        methods: {}
     }
 </script>
 

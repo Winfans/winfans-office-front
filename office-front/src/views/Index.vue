@@ -21,11 +21,11 @@
                 </el-menu-item>
 
             </el-menu>
-            <div class="logo-box">
+            <router-link  tag="div"  to="/officeHome"  class="logo-box">
                 <div class="logo">
                     WF
                 </div>
-            </div>
+            </router-link>
             <div class="back-box" @click="onBackClick">
                 <i class="iconfont icon-gongxiangtubiaozhuangtaileicaozuolei59 font-size-30 hover-color-C0C4CC"></i>
             </div>
