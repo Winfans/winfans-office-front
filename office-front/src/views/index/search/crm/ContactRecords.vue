@@ -22,7 +22,7 @@
                         搜索
                     </el-button>
                     <span style="float: right;">
-                        <el-button type="primary" plain><span style="font-size:15px;">+</span> 签单记录</el-button>
+                        <el-button type="primary" plain><span style="font-size:15px;">+</span> 新增</el-button>
                     </span>
                 </div>
                 <div class="main-middle">

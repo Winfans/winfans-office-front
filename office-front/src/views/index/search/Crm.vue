@@ -28,8 +28,8 @@
                     <el-menu-item :index="prefixPath +'/reportForm'">
                         <span class="hover-color-409EFF">报表</span>
                     </el-menu-item>
-                    <el-menu-item :index="prefixPath +'/user'">
-                        <span class="hover-color-409EFF">用户</span>
+                    <el-menu-item :index="prefixPath +'/userTeam'">
+                        <span class="hover-color-409EFF">团队  </span>
                     </el-menu-item>
                     <el-menu-item :index="prefixPath +'/setting'">
                         <span class="hover-color-409EFF">设置</span>

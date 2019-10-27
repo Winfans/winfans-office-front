@@ -81,14 +81,14 @@ export default new Router({
                         // 报表
                         {
                             path: 'reportForm',
-                            name: 'RportForm',
+                            name: 'ReportForm',
                             component: () => import('./views/index/search/crm/ReportForm'),
                         },
-                        // 用户
+                        // 团队
                         {
-                            path: 'user',
-                            name: 'User',
-                            component: () => import('./views/index/search/crm/User'),
+                            path: 'userTeam',
+                            name: 'UserTeam',
+                            component: () => import('./views/index/search/crm/UserTeam'),
                         },
                         // 设置
                         {

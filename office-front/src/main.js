@@ -9,10 +9,11 @@ import './plugins/element.js'
 import './assets/iconfont/iconfont.css'
 import qs from 'qs'
 import moment from 'moment'
+import VueCookies from 'vue-cookies'
+import JQuery from 'jquery';
 
 
-
-
+Vue.use(VueCookies);
 
 
 Vue.config.productionTip = false;
@@ -20,7 +21,7 @@ Vue.config.productionTip = false;
 Vue.prototype.BASE_URL = "http://localhost:12649";
 Vue.prototype.$qs = qs;
 Vue.prototype.$moment = moment;
-
+Vue.prototype.$ = JQuery;
 
 router.beforeEach((to, from, next) => {
     const needLogin = to.matched.some(route => route.meta && route.meta.login);

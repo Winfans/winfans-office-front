@@ -5,21 +5,22 @@
             <ul>
                 <li v-for="(tab, index) in tabs" :key="index" @mouseenter="mouseEnterTab(index + 1)">
                     <i class="iconfont" :class="tab.icon"></i>
-                    <div class="tab-title" :class="tab.tabActive"  :style="tab.tabActiveStyle">{{tab.title}}</div>
+                    <div class="tab-title" >{{tab.title}}</div>
                 </li>
             </ul>
             <div class="tab-item">
-                <div v-for="(menu, index) in menus" :key="index" v-show="menu.isShow">
-                    <ul>
-                        <li v-for="(submenu, index) in menu.submenus" :key="index">
-                            <i class="iconfont" :class="submenu.icon"></i>
-                            <p style="padding: 10px;font-weight: bold;font-size:28px;">{{submenu.title}}</p>
-                            <p style="font-size: 15px;padding-bottom: 10px;">{{submenu.description}}</p>
-                            <el-button size="small" type="danger" round>了解 更多
-                            </el-button>
-                        </li>
-                    </ul>
-                </div>
+
+                    <div v-for="(menu, index) in menus" :key="index" v-show="menu.isShow">
+                        <ul>
+                            <li v-for="(submenu, index) in menu.submenus" :key="index">
+                                <i class="iconfont" :class="submenu.icon"></i>
+                                <p style="padding: 10px;font-weight: bold;font-size:28px;">{{submenu.title}}</p>
+                                <p style="font-size: 15px;padding-bottom: 10px;">{{submenu.description}}</p>
+                                <el-button size="small" type="danger" round>了解 更多
+                                </el-button>
+                            </li>
+                        </ul>
+                    </div>
             </div>
         </div>
     </div>
@@ -169,17 +170,22 @@
         },
         methods: {
             mouseEnterTab: function (index) {
-                // const tabTitleDiv = document.getElementsByClassName('tab-title')[index];
+
+
                 this.menus.forEach(ele => {
                     if (ele.id === index) {
                         ele.isShow = true;
-                        this.$set(ele, 'tabActive', 'tab-active');
+                        this.$('.tab ul li .tab-title')
+                            .eq(ele.id - 1)
+                            .addClass('tab-active');
+                        // this.$set(ele, 'tabActive', 'tab-active');
                         // tabTitleDiv.color = "#F56C6C";
                         // tabTitleDiv.borderBottom = "";
                     } else {
                         ele.isShow = false;
                         ele.tabActive = '';
-
+                        this.$('.tab ul li .tab-title')
+                            .eq(ele.id - 1).removeClass('tab-active');
                         // tabTitleDiv.color = "#000";
                         // tabTitleDiv.borderBottom = "none";
                     }
@@ -227,6 +233,7 @@
                         /*}*/
                     }
                     div.tab-active {
+                        transition: all .2s ease;
                         color: #F56C6C;
                         border-bottom: 4px solid #F56C6C;
                     }

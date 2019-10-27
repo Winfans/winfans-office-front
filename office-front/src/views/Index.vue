@@ -37,12 +37,16 @@
                         popper-class="heading-box-el-popover">
                     <slot>
                         <ul class="heading-show">
-                            <li>用户名</li>
-                            <li>退出登录</li>
+                            <li>{{user.userName }}</li>
+                            <li @click="logoutClick">退出登录</li>
                         </ul>
                     </slot>
                     <div class="heading" slot="reference">
-                        <img src="../assets/img/test.png" alt="">
+                        <el-avatar v-if="user.headImg"   :size="40">
+                            <img  :src="user.headImg"/>
+                        </el-avatar>
+                        <el-avatar v-else icon="el-icon-user-solid"  :size="40">
+                        </el-avatar>+
                     </div>
                 </el-popover>
             </div>
@@ -60,12 +64,40 @@
         name: "Index",
         data() {
             return {
+                user: '',
             }
+        },
+        created(){
+            const loading = this.$loading({
+                lock: true,
+                text: 'Loading',
+                spinner: 'el-icon-loading',
+                background: 'rgba(0, 0, 0, 0.2)',
+            });
+            this.$axios.get('/user/getUserDTO').then(res => {
+                this.user = res.data.data;
+                loading.close();
+
+            }).catch(() => {
+                loading.close();
+                this.$alert('当前网络不通......', '', {
+                    type: 'error',
+                    confirmButtonText: '确定',
+                });
+            });
+
         },
         methods: {
             onBackClick() {
                 this.$router.back();
             },
+            logoutClick() {
+                this.$cookies.remove('b0ad13e59c636ca3709e2622089f7718');
+                this.$router.push({
+                    name: 'Login'
+                })
+
+            }
         }
     }
 </script>
@@ -113,11 +145,9 @@
             .heading-box {
                 position: absolute;
                 bottom: 3%;
-                left: calc(50% - 18px);
+                left: calc(50% - 20px);
                 .heading {
                     cursor: pointer;
-                    width: 36px;
-                    height: 36px;
                     overflow: hidden;
                     border-radius: 50%;
                     img {

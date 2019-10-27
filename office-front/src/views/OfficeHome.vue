@@ -13,9 +13,14 @@
                     <router-link tag="li" to="/officeHome/about">关于</router-link>
                 </ul>
             </nav>
-            <el-button style=" position: absolute;
+            <el-button v-if="loginShow" style=" position: absolute;
+                top: calc(50% - 19.8px);right: 5%;" type="danger" round @click="logoutClick">退出登录
+            </el-button>
+            <el-button v-else style=" position: absolute;
                 top: calc(50% - 19.8px);right: 5%;" type="danger" round @click="goToLogin">登录
             </el-button>
+
+
         </el-header>
         <el-main class="main">
             <div class="banner">
@@ -38,7 +43,6 @@
             <router-view></router-view>
         </el-main>
         <el-footer>
-
         </el-footer>
     </el-container>
 </template>
@@ -69,8 +73,13 @@
                         icon: 'icon-jinxiaocun',
                         title: '管业务',
                     },
-                ]
+                ],
+                loginShow: false,
             }
+        },
+        created() {
+            const isLogin = this.$cookies.isKey('b0ad13e59c636ca3709e2622089f7718');
+            isLogin ? this.loginShow = true : this.loginShow = false;
         },
         methods: {
             goToLogin() {
@@ -78,7 +87,10 @@
                     name: "Login"
                 })
             },
-
+            logoutClick() {
+                this.loginShow = false;
+                this.$cookies.remove('b0ad13e59c636ca3709e2622089f7718');
+            }
         }
     }
 </script>
@@ -88,9 +100,11 @@
         .header {
             position: relative;
             line-height: 75px;
+
             .logo-box {
                 padding-left: 65px;
                 display: inline-block;
+
                 .logo {
                     display: inline-block;
                     color: #fff;
@@ -114,11 +128,13 @@
 
                 ul {
                     display: inline-block;
+
                     li {
                         padding: 0 15px;
                         font-size: 16px;
                         display: inline-block;
                         cursor: pointer;
+
                         &:hover {
                             color: #F56C6C;
                         }
@@ -126,11 +142,14 @@
                 }
             }
         }
+
         .main {
             padding: 0;
+
             .banner {
                 position: relative;
                 background: #273240;
+
                 .el-carousel__item {
                     background: #273240;
                 }

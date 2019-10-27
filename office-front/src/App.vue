@@ -17,6 +17,7 @@
         color: #F56C6C;
         border-bottom: 4px solid #F56C6C;
     }
+
     // 初始化
     #app {
         font-family: "Hiragino Sans GB";
@@ -242,57 +243,47 @@
         }
     }
 
-    // 用户
-    #user {
-        .el-card.el-card-user {
+    // 报表
+    #report-form {
+        .el-card.el-card-report-form {
+            .el-card__header {
+                background: #F6F6F6;
+
+            }
+            .main {
+
+            }
+        }
+    }
+
+    // 团队
+    #user-team {
+        .el-card.el-card-user-team {
             .el-card__header {
                 background: #F6F6F6;
                 /*height: 60px;*/
                 /*padding: 5px 20px;*/
             }
             .main {
-                .main-top {
-                    .search {
-                        .el-input__inner {
-                            border-bottom-right-radius: 0;
-                            border-top-right-radius: 0;
+
+                .el-table {
+                    .el-table__header {
+                        .cell {
+                            color: #000;
                         }
                     }
-                }
-                .main-middle {
-                    .el-table {
-                        .el-table__header {
-                            .cell {
-                                color: #000;
-                            }
+                    .el-table__body {
+                        .cell {
+                            font-size: 14px;
+                            /*line-height: 14px;*/
+                            /*height: 10px;*/
+                            overflow: visible;
                         }
-                        .el-table__body {
-                            .cell {
-                                font-size: 14px;
-                                /*line-height: 14px;*/
-                                /*height: 10px;*/
-                                overflow: visible;
-                            }
-                        }
-                    }
-                    .demo-table-expand {
-                        font-size: 0;
-                    }
-                    .demo-table-expand label {
-                        width: 120px;
-                        color: #99a9bf;
-                    }
-                    .demo-table-expand .el-form-item {
-                        margin-right: 0;
-                        margin-bottom: 0;
-                        width: 50%;
                     }
                 }
             }
         }
     }
-
-
 
     // 设置
     #setting {
@@ -319,7 +310,6 @@
         }
     }
 
-
     // office主页面
     #office-home {
         .el-carousel__container {
@@ -329,54 +319,60 @@
     }
 
     // 联系记录
-    /*#contact-records {*/
-        /*.el-card.el-card-client {*/
-            /*.el-card__header {*/
-                /*background: #F6F6F6;*/
-                /*!*height: 60px;*!*/
-                /*!*padding: 5px 20px;*!*/
-            /*}*/
-            /*.main {*/
-                /*.main-top {*/
-                    /*.search {*/
-                        /*.el-input__inner {*/
-                            /*border-bottom-right-radius: 0;*/
-                            /*border-top-right-radius: 0;*/
-                        /*}*/
-                    /*}*/
-                /*}*/
-                /*.main-middle {*/
-                    /*.el-table {*/
-                        /*.el-table__header {*/
-                            /*.cell {*/
-                                /*color: #000;*/
-                            /*}*/
-                        /*}*/
-                        /*.el-table__body {*/
-                            /*.cell {*/
-                                /*font-size: 14px;*/
-                                /*!*line-height: 14px;*!*/
-                                /*!*height: 10px;*!*/
-                                /*overflow: visible;*/
-                            /*}*/
-                        /*}*/
-                    /*}*/
-                    /*.demo-table-expand {*/
-                        /*font-size: 0;*/
-                    /*}*/
-                    /*.demo-table-expand label {*/
-                        /*width: 120px;*/
-                        /*color: #99a9bf;*/
-                    /*}*/
-                    /*.demo-table-expand .el-form-item {*/
-                        /*margin-right: 0;*/
-                        /*margin-bottom: 0;*/
-                        /*width: 50%;*/
-                    /*}*/
-                /*}*/
-            /*}*/
-        /*}*/
-    /*}*/
+    #contact-records {
+        .el-card.el-card-client {
+            .el-card__header {
+                background: #F6F6F6;
+                /*height: 60px;*/
+                /*padding: 5px 20px;*/
+            }
+
+            .main {
+                .main-top {
+                    .search {
+                        .el-input__inner {
+                            border-bottom-right-radius: 0;
+                            border-top-right-radius: 0;
+                        }
+                    }
+                }
+
+                .main-middle {
+                    .el-table {
+                        .el-table__header {
+                            .cell {
+                                color: #000;
+                            }
+                        }
+
+                        .el-table__body {
+                            .cell {
+                                font-size: 14px;
+                                /*line-height: 14px;*/
+                                /*height: 10px;*/
+                                overflow: visible;
+                            }
+                        }
+                    }
+
+                    .demo-table-expand {
+                        font-size: 0;
+                    }
+
+                    .demo-table-expand label {
+                        width: 120px;
+                        color: #99a9bf;
+                    }
+
+                    .demo-table-expand .el-form-item {
+                        margin-right: 0;
+                        margin-bottom: 0;
+                        width: 50%;
+                    }
+                }
+            }
+        }
+    }
 
 
 </style>

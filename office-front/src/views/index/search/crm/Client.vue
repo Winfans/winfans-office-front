@@ -32,8 +32,8 @@
                     <span style="float: right;">
                         <el-button type="primary" plain @click="addCustomerShowClick"><span
                                 style="font-size:15px;">+</span> 客户</el-button>
-                    <el-button type="primary" plain> 编辑</el-button>
-                    <el-button type="primary" plain>删除</el-button>
+                    <el-button type="primary" plain @click="editCustomerShowClick"> 编辑</el-button>
+                    <el-button type="primary" plain @click="deleteCustomerShowClick">删除</el-button>
                     </span>
                     <!--<el-input v-model="client" placeholder="客户" style="width: 200px;height: 30px;line-height: 20px;padding: 0;"></el-input>-->
                 </div>
@@ -175,6 +175,32 @@
                 <el-button @click="addCustomerShow = false">取消</el-button>
             </span>
         </el-dialog>
+        <el-dialog
+                title="编辑客户"
+                :visible.sync="editCustomerShow"
+                width="30%"
+                center>
+            <el-form ref="form2" label-width="70px" :model="form2">
+                <el-form-item label="客户名称">
+                    <el-input v-model="form2.customerName" placeholder="客户名称"></el-input>
+                </el-form-item>
+                <el-form-item label="业务员">
+                    <el-input v-model="form2.userName" placeholder="业务员" disabled></el-input>
+                </el-form-item>
+                <el-form-item label="状态">
+                    <el-select v-model="form2.status" placeholder="请选择">
+                        <el-option label="成交" value="1"></el-option>
+                        <el-option label="失败 " value="2"></el-option>
+                        <el-option label="潜在  " value="3"></el-option>
+                    </el-select>
+                </el-form-item>
+            </el-form>
+            <span slot="footer" class="dialog-footer">
+                <el-button type="primary" @click="editCustomerClick">编辑客户</el-button>
+                <el-button @click="editCustomerShow = false">取消</el-button>
+            </span>
+        </el-dialog>
+
     </div>
 </template>
 
@@ -216,7 +242,15 @@
                 ],
                 multipleSelection: [],
                 addCustomerShow: false, // 是否显示添加客户的对话框
+                editCustomerShow: false,
+                customerIdList: [],
                 form: {
+                    customerName: '',
+                    userName: '',
+                    status: '',
+                },
+
+                form2: {
                     customerName: '',
                     userName: '',
                     status: '',
@@ -224,23 +258,7 @@
             }
         },
         created() {
-            const loading = this.$loading({
-                lock: true,
-                text: 'Loading',
-                spinner: 'el-icon-loading',
-                background: 'rgba(0, 0, 0, 0.2)',
-            });
-            this.$axios.get('/customer/findAllCustomerTeamIdAndByPage/' + this.$route.params.id + '/' + this.page + '/' + this.size).then(res => {
-                loading.close();
-                this.tableData = res.data.data.content;
-                this.total = res.data.data.totalElements;
-            }).catch(() => {
-                loading.close();
-                this.$alert('当前网络不通......', '', {
-                    type: 'error',
-                    confirmButtonText: '确定',
-                });
-            });
+            this.init();
         },
         methods: {
             statusTransform(status) {
@@ -252,7 +270,25 @@
                     return '潜在';
                 }
             },
-
+            init() {
+                const loading = this.$loading({
+                    lock: true,
+                    text: 'Loading',
+                    spinner: 'el-icon-loading',
+                    background: 'rgba(0, 0, 0, 0.2)',
+                });
+                this.$axios.get('/customer/findAllCustomerTeamIdAndByPage/' + this.$route.params.id + '/' + this.page + '/' + this.size).then(res => {
+                    loading.close();
+                    this.tableData = res.data.data.content;
+                    this.total = res.data.data.totalElements;
+                }).catch(() => {
+                    loading.close();
+                    this.$alert('当前网络不通......', '', {
+                        type: 'error',
+                        confirmButtonText: '确定',
+                    });
+                });
+            },
             // 每页显示数量改变
             handleSizeChange(val) {
                 this.size = val;
@@ -296,8 +332,8 @@
                     });
                 });
             },
-            handleSelectionChange() {
-
+            handleSelectionChange(val) {
+                this.multipleSelection = val;
             },
 
             // 添加客户点击显示对话框
@@ -321,6 +357,135 @@
                         confirmButtonText: '确定',
                     });
                 });
+            },
+
+            editCustomerShowClick() {
+                if (this.multipleSelection.length > 1 || this.multipleSelection.length <= 0) {
+                    this.$alert('编辑客户只能选择一个客户', '', {
+                        type: 'error',
+                        confirmButtonText: '确定',
+                    });
+                    return;
+                }
+                const loading = this.$loading({
+                    lock: true,
+                    text: 'Loading',
+                    spinner: 'el-icon-loading',
+                    background: 'rgba(0, 0, 0, 0.2)',
+                });
+
+                this.$axios.get('/customer/findCustomerByCustomerId/' + this.multipleSelection[0].customerId).then(res => {
+                    loading.close();
+                    this.form2 = res.data.data;
+                    this.form2.status = String(this.form2.status);
+                    this.editCustomerShow = true
+                }).catch(() => {
+                    loading.close();
+                    this.$alert('当前网络不通......', '', {
+                        type: 'error',
+                        confirmButtonText: '确定',
+                    });
+                });
+            },
+
+            deleteCustomerShowClick() {
+                if (this.multipleSelection.length <= 0) {
+                    this.$alert('删除客户只能选择一个或多个客户', '', {
+                        type: 'error',
+                        confirmButtonText: '确定',
+                    });
+                    return;
+                }
+                const loading = this.$loading({
+                    lock: true,
+                    text: 'Loading',
+                    spinner: 'el-icon-loading',
+                    background: 'rgba(0, 0, 0, 0.2)',
+                });
+
+
+                this.$confirm('此操作将永久删除该客户, 是否继续?', '提示', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    type: 'warning'
+                }).then(() => {
+
+                    this.multipleSelection.forEach(value => this.customerIdList.push(value.customerId));
+                    const param = {
+                        customerIdList: this.customerIdList.join(",")
+                    };
+                    this.$axios.delete('/customer/deleteCustomerByCustomerId', {params: param}).then(() => {
+                        this.multipleSelection = [];
+                        this.customerIdList = [];
+                        loading.close();
+                        this.$message({
+                            type: 'success',
+                            message: '删除成功!'
+                        });
+                        this.multipleSelection = [];
+                        this.init();
+                    }).catch(() => {
+                        loading.close();
+                        this.$alert('删除失败', '', {
+                            type: 'error',
+                            confirmButtonText: '确定',
+                        });
+                    });
+
+                }).catch(() => {
+                    this.$message({
+                        type: 'info',
+                        message: '已取消删除'
+                    });
+                });
+            },
+            editCustomerClick() {
+                if (this.form2.customerName === '') {
+                    this.$alert('客户名称不能为空', '', {
+                        type: 'error',
+                        confirmButtonText: '确定',
+                    });
+                } else if (this.form2.status === '') {
+                    this.$alert('状态不能为空', '', {
+                        type: 'error',
+                        confirmButtonText: '确定',
+                    });
+                } else {
+                    const loading = this.$loading({
+                        lock: true,
+                        text: 'Loading',
+                        spinner: 'el-icon-loading',
+                        background: 'rgba(0, 0, 0, 0.2)',
+                    });
+                    const data = {
+                        customerName: this.form2.customerName,
+                        status: parseInt(this.form2.status),
+                        // customerName: this.form.customerName,
+                        // userName: this.form.userName,
+                        // status: parseInt(this.form.status),
+                        // teamId: this.$route.params.id
+
+                    };
+                    console.log(data);
+                    this.$axios.post('/customer/updateCustomerByCustomerId/' + this.multipleSelection[0].customerId, this.$qs.stringify(data)).then(() => {
+                        loading.close();
+                        this.$alert('修改成功 ', '', {
+                            type: 'success',
+                            confirmButtonText: '确定',
+                        }).then(() => {
+                            this.editCustomerShow = false;
+                            this.form2.customerName = '';
+                            this.form2.status = '';
+                            this.init();
+                        });
+                    }).catch(() => {
+                        loading.close();
+                        this.$alert('修改失败', '', {
+                            type: 'error',
+                            confirmButtonText: '确定',
+                        });
+                    })
+                }
             },
 
             // 添加客户点击事件
@@ -378,21 +543,26 @@
 
     #client {
         background: transparent;
+
         .box-card {
             i {
                 font-size: 23px;
                 color: #fff;
             }
+
             .main {
                 .main-top {
                     padding-bottom: 10px;
+
                     .search-btn {
                         margin-right: 10px;
                     }
                 }
+
                 .main-middle {
 
                 }
+
                 .main-footer {
                     margin-top: 20px;
                 }

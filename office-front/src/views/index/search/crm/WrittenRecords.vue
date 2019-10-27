@@ -6,7 +6,8 @@
                      style="vertical-align:top;background: #E26D15;display: inline-block;width: 28px;height: 28px;border-radius: 4px;line-height: 28px;text-align: center;;">
                     <i class="iconfont icon-CRM"></i>
                 </div>
-                <span class="font-weight-bold font-size-20" style="padding-left: 10px;">签单记录</span>
+                <span class="font-weight-bold font-size-20" style="padding-left: 10px;"
+                      @click="addWrittenRecordsShow = !addWrittenRecordsShow">签单记录</span>
             </div>
             <div class="main">
 
@@ -66,11 +67,13 @@
                                 <template slot-scope="scope">
                                     <el-button
                                             size="mini"
-                                            @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
+                                            @click="handleEdit(scope.$index, scope.row)">编辑
+                                    </el-button>
                                     <el-button
                                             size="mini"
                                             type="danger"
-                                            @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+                                            @click="handleDelete(scope.$index, scope.row)">删除
+                                    </el-button>
                                 </template>
                             </el-table-column>
                         </el-table>
@@ -94,6 +97,28 @@
                             :total="100">
                     </el-pagination>
                 </div>
+
+
+                <el-dialog
+                        title=添加签单记录
+                        :visible.sync="addWrittenRecordsShow"
+                        width="30%"
+                        center>
+                    <el-form ref="form" label-width="70px" :model="form">
+                        <el-form-item label="客户">
+                            <el-input v-model="form.customerName" placeholder="客户名称"></el-input>
+                        </el-form-item>
+                        <el-form-item label="业务员">
+                            <el-input v-model="form.userName" placeholder="业务员" disabled></el-input>
+                        </el-form-item>
+
+                    </el-form>
+                    <span slot="footer" class="dialog-footer">
+                        <el-button type="primary" @click="addWrittenRecords">添加</el-button>
+                        <el-button @click="addWrittenRecordsShow = false">取消</el-button>
+                    </span>
+                </el-dialog>
+
             </div>
         </el-card>
     </div>
@@ -106,6 +131,7 @@
             return {
                 user: '',
                 status: '',
+                addWrittenRecordsShow: false,
                 options: [
                     {
                         value: '选项1',
@@ -130,7 +156,8 @@
                         money: 12.25,
                     },
                 ],
-                multipleSelection: []
+                multipleSelection: [],
+                form: {}
             }
         },
         methods: {
@@ -142,7 +169,10 @@
             },
             handleSelectionChange() {
 
-            }
+            },
+            addWrittenRecords() {
+
+            },
         },
     }
 </script>
@@ -152,18 +182,22 @@
 
     #written-records {
         background: transparent;
+
         .box-card {
             i {
                 font-size: 23px;
                 color: #fff;
             }
-            .main{
+
+            .main {
                 .main-top {
                     padding-bottom: 10px;
+
                     .search-btn {
                         margin-right: 10px;
                     }
                 }
+
                 .main-footer {
                     margin-top: 20px;
                 }
