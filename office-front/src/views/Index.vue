@@ -46,7 +46,7 @@
                             <img  :src="user.headImg"/>
                         </el-avatar>
                         <el-avatar v-else icon="el-icon-user-solid"  :size="40">
-                        </el-avatar>+
+                        </el-avatar>
                     </div>
                 </el-popover>
             </div>

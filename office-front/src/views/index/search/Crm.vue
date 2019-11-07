@@ -16,18 +16,18 @@
                     <el-menu-item :index="prefixPath +'/writtenRecords'">
                         <span class="hover-color-409EFF">签单记录</span>
                     </el-menu-item>
-                    <el-menu-item :index="prefixPath +'/contactRecords'">
-                        <span class="hover-color-409EFF">联系记录</span>
-                    </el-menu-item>
-                    <el-submenu index="1">
-                        <template slot="title">待办提醒</template>
-                        <!--<el-menu-item index="/index/crm/remind">选项1</el-menu-item>-->
-                        <!--<el-menu-item index="/index/crm/remind">选项2</el-menu-item>-->
-                        <!--<el-menu-item index="/index/crm/remind">选项3</el-menu-item>-->
-                    </el-submenu>
-                    <el-menu-item :index="prefixPath +'/reportForm'">
-                        <span class="hover-color-409EFF">报表</span>
-                    </el-menu-item>
+                    <!--                    <el-menu-item :index="prefixPath +'/contactRecords'">-->
+                    <!--                        <span class="hover-color-409EFF">联系记录</span>-->
+                    <!--                    </el-menu-item>-->
+                    <!--                    <el-submenu index="1">-->
+                    <!--                        <template slot="title">待办提醒</template>-->
+                    <!--                        <el-menu-item index="/index/crm/remind">选项1</el-menu-item>-->
+                    <!--                        <el-menu-item index="/index/crm/remind">选项2</el-menu-item>-->
+                    <!--                        <el-menu-item index="/index/crm/remind">选项3</el-menu-item>-->
+                    <!--                    </el-submenu>-->
+                    <!--                    <el-menu-item :index="prefixPath +'/reportForm'">-->
+                    <!--                        <span class="hover-color-409EFF">报表</span>-->
+                    <!--                    </el-menu-item>-->
                     <el-menu-item :index="prefixPath +'/userTeam'">
                         <span class="hover-color-409EFF">团队  </span>
                     </el-menu-item>
@@ -68,10 +68,12 @@
             text-align: center;
             line-height: 60px;
             position: relative;
+
             .el-menu {
                 width: 85%;
                 margin: 0 auto;
             }
+
             .crm-logo {
                 background: rgba(153, 51, 102, .7);
                 border-radius: 4px;

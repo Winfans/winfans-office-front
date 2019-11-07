@@ -5,7 +5,7 @@ Vue.use(Router);
 
 export default new Router({
     mode: 'history',
-    base: process.env.BASE_URL,
+    base: '/office',
     routes: [
 
         // 用户首页导航
@@ -107,6 +107,13 @@ export default new Router({
             ]
         },
 
+        // 导航
+        {
+            path: '/navPage',
+            name: 'NavPage',
+            component: () => import('./views/NavPage'),
+        },
+
         // 登录
         {
             path: '/login',
@@ -160,7 +167,7 @@ export default new Router({
             path: '*',
             redirect(to) {
                 if (to.path === '/') {
-                    return '/officeHome'
+                    return '/navPage'
                 } else {
                     return '/notFound'
                 }

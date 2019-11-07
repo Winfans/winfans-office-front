@@ -2,23 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0914fc19-edf4-4610-a3b0-e13a9d6fc33c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/views/index/search/crm/UserTeam.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/webServers.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img/bg/bg1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/NavPage.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/iconfont/iconfont.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/iconfont/iconfont.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/iconfont/iconfont.eot" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/iconfont/iconfont.eot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/iconfont/iconfont.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/iconfont/iconfont.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/iconfont/iconfont.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/iconfont/iconfont.ttf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/iconfont/iconfont.woff" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/iconfont/iconfont.woff" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/iconfont/iconfont.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/iconfont/iconfont.woff2" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/router.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/OfficeHome.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/OfficeHome.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/NotFound.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/NotFound.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/index/Help.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/index/Help.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/index/Search.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/index/Search.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/index/search/Crm.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/index/search/Crm.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/index/search/crm/Client.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/index/search/crm/Client.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/index/search/crm/ContactRecords.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/index/search/crm/ContactRecords.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/index/search/crm/ReportForm.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/index/search/crm/ReportForm.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/index/search/crm/User.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/index/search/crm/Setting.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/index/search/crm/Setting.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/index/search/crm/UserTeam.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/index/search/crm/UserTeam.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/index/search/crm/WrittenRecords.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/index/search/crm/WrittenRecords.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/office_home/Main.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/office_home/Main.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/vue.config.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -39,8 +49,10 @@
   <component name="ProjectId" id="1SRr4tJ4hkE4BusdTdbn4CseAG7" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/Users/WF帆少/Desktop/winfans-office-front/office-front/src/views/index/Search.vue" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/assets/img/bg" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -51,21 +63,21 @@
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="prettierjs.PrettierConfiguration.Package" value="C:\Users\WF帆少\Desktop\office-front\node_modules\prettier" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.selected.configurable" value="web.server" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\WF帆少\Desktop\winfans-office-front\office-front\src\assets\img\bg" />
+      <recent name="C:\Users\WF帆少\Desktop\winfans-office-front\office-front\src\assets\iconfont" />
+      <recent name="C:\Users\WF帆少\Desktop\winfans-office-front\office-front\public\fullpage" />
+      <recent name="C:\Users\WF帆少\Desktop\winfans-office-front\office-front\src\views\index\search\crm" />
+      <recent name="C:\Users\WF帆少\Desktop\winfans-office-front\office-front\src\assets\img\notfound" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\WF帆少\Desktop\winfans-office-front\office-front\src\assets\img\banner" />
       <recent name="C:\Users\WF帆少\Desktop\winfans-office-front\office-front\src\views\index\search" />
       <recent name="C:\Users\WF帆少\Desktop\winfans-office-front\office-front" />
       <recent name="C:\Users\WF帆少\Desktop\office-front\src\views\index" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\WF帆少\Desktop\winfans-office-front\office-front\src\views\index\search\crm" />
-      <recent name="C:\Users\WF帆少\Desktop\winfans-office-front\office-front\src\assets\img\notfound" />
-      <recent name="C:\Users\WF帆少\Desktop\winfans-office-front\office-front\src\assets\iconfont" />
-      <recent name="C:\Users\WF帆少\Desktop\winfans-office-front\office-front\public" />
-      <recent name="C:\Users\WF帆少\Desktop\winfans-office-front\office-front\public\tinymce" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -141,11 +153,20 @@
       <workItem from="1571989649540" duration="13638000" />
       <workItem from="1572050167424" duration="25000" />
       <workItem from="1572179291229" duration="46000" />
+      <workItem from="1572500117441" duration="1655000" />
+      <workItem from="1572524187655" duration="15416000" />
+      <workItem from="1572855361495" duration="44355000" />
+      <workItem from="1573125004717" duration="1159000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+    <option name="exactExcludedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/../../vue-admin-template/node_modules/@vue/cli-plugin-unit-jest/generator/template/tests/unit/example.spec.js" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">

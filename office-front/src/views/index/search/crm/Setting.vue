@@ -36,27 +36,32 @@
             }
         },
         created() {
-            const loading = this.$loading({
-                lock: true,
-                text: 'Loading',
-                spinner: 'el-icon-loading',
-                background: 'rgba(0, 0, 0, 0.2)',
-            });
-
-            this.$axios.get('/team/findTeamByTeamId/' + this.$route.params.id).then(res => {
-                this.teamName = res.data.data.teamName;
-                loading.close();
-            }).catch(() => {
-                loading.close();
-                this.$message({
-                    showClose: true,
-                    message: '网络不通，请检查网络设置',
-                    type: 'error',
-                    center: true
+            this.init();
+        },
+        methods: {
+            init() {
+                const loading = this.$loading({
+                    lock: true,
+                    text: 'Loading',
+                    spinner: 'el-icon-loading',
+                    background: 'rgba(0, 0, 0, 0.2)',
                 });
-            });
 
+                this.$axios.get('/team/findTeamByTeamId/' + this.$route.params.id).then(res => {
+                    this.teamName = res.data.data.teamName;
+                    loading.close();
+                }).catch(() => {
+                    loading.close();
+                    this.$message({
+                        showClose: true,
+                        message: '网络不通，请检查网络设置',
+                        type: 'error',
+                        center: true
+                    });
+                });
+            },
         }
+
     }
 </script>
 

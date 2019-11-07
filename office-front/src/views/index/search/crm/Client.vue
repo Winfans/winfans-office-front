@@ -431,12 +431,12 @@
                             confirmButtonText: '确定',
                         });
                     });
-
                 }).catch(() => {
                     this.$message({
                         type: 'info',
                         message: '已取消删除'
                     });
+                    loading.close();
                 });
             },
             editCustomerClick() {
@@ -524,6 +524,7 @@
                             this.form.customerName = '';
                             this.form.status = '';
                             this.form.teamId = '';
+                            this.init();
                         });
                     }).catch(() => {
                         loading.close();
@@ -531,6 +532,10 @@
                             type: 'error',
                             confirmButtonText: '确定',
                         });
+                        this.form.userName = '';
+                        this.form.customerName = '';
+                        this.form.status = '';
+                        this.form.teamId = '';
                     })
                 }
             },

@@ -10,14 +10,14 @@
                         error <span>404</span>
                     </div>
                     <h1 class="da-error-heading">哎哟喂！页面让二狗子叼走了！</h1>
-                    <p>大家可以到二狗子没有叼过的地方看看！ <a href="http://localhost:8080">点击进入首页</a></p>
+                    <p>大家可以到二狗子没有叼过的地方看看！ <a href="http://localhost:8080/office">点击进入首页</a></p>
                 </div>
             </div>
         </div>
         <!-- Footer -->
         <div id="da-footer">
             <div class="da-container clearfix">
-                <a href="http://localhost:8080" target="_blank">二狗办公</a>
+                <a href="http://localhost:8080/office">二狗办公</a>
             </div>
         </div>
     </div>
@@ -26,7 +26,12 @@
 
 <script>
     export default {
-        name: "NotFound"
+        name: "NotFound",
+        date(){
+            return{
+                homePath: ''
+            }
+        }
     }
 </script>
 

@@ -28,7 +28,7 @@
                                         <i class="iconfont icon-tianjiajiahaowubiankuang font-size-14"></i>
                                         <span class="font-size-14 create-team">创建团队</span>
                                     </span>
-                                    <span class="font-size-14 font-color-409EFF more">了解详情</span>
+                                    <router-link tag="span" to="/aa" class="font-size-14 font-color-409EFF more">了解详情</router-link>
                                 </p>
                             </div>
                         </div>

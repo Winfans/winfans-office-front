@@ -6,8 +6,7 @@
                      style="vertical-align:top;background: #E26D15;display: inline-block;width: 28px;height: 28px;border-radius: 4px;line-height: 28px;text-align: center;;">
                     <i class="iconfont icon-CRM"></i>
                 </div>
-                <span class="font-weight-bold font-size-20" style="padding-left: 10px;"
-                      @click="addWrittenRecordsShow = !addWrittenRecordsShow">签单记录</span>
+                <span class="font-weight-bold font-size-20" style="padding-left: 10px;">签单记录</span>
             </div>
             <div class="main">
 
@@ -22,7 +21,8 @@
                         搜索
                     </el-button>
                     <span style="float: right;">
-                        <el-button type="primary" plain><span style="font-size:15px;">+</span> 签单记录</el-button>
+                        <el-button type="primary" plain @click.native="addWrittenRecordsShowClick"><span
+                                style="font-size:15px;">+</span> 签单记录</el-button>
                     </span>
                 </div>
                 <div class="main-middle">
@@ -34,22 +34,21 @@
                                 ref="multipleTable"
                                 :data="tableData"
                                 tooltip-effect="dark"
-                                style="width: 100%"
-                                :default-sort="{prop: 'date', order: 'descending'}">
+                                style="width: 100%">
                             <el-table-column
                                     label="日期"
                                     width="180">
                                 <template slot-scope="scope">
                                     <i class="el-icon-time" style="font-size: 13px;color: #000;"></i>
-                                    <span style="margin-left: 6px">{{ scope.row.createTime }}</span>
+                                    <span style="margin-left: 6px">{{$moment(scope.row.createTime).format('YYYY-MM-DD')}}</span>
                                 </template>
                             </el-table-column>
                             <el-table-column
-                                    prop="customName"
+                                    prop="customerName"
                                     label="客户">
                             </el-table-column>
                             <el-table-column
-                                    prop="user"
+                                    prop="userName"
                                     label="业务员">
                             </el-table-column>
                             <el-table-column
@@ -67,12 +66,12 @@
                                 <template slot-scope="scope">
                                     <el-button
                                             size="mini"
-                                            @click="handleEdit(scope.$index, scope.row)">编辑
+                                            @click="editWrittenRecordsShowClick(scope.row)">编辑
                                     </el-button>
                                     <el-button
                                             size="mini"
                                             type="danger"
-                                            @click="handleDelete(scope.$index, scope.row)">删除
+                                            @click="deleteWrittenRecordsClick(scope.row)">删除
                                     </el-button>
                                 </template>
                             </el-table-column>
@@ -93,14 +92,14 @@
                             style="text-align: center"
                             background
                             layout="sizes, prev, pager, next, total"
-                            :page-size="10"
-                            :total="100">
+                            :page-size="size"
+                            :total="total">
                     </el-pagination>
                 </div>
 
 
                 <el-dialog
-                        title=添加签单记录
+                        title="添加签单记录"
                         :visible.sync="addWrittenRecordsShow"
                         width="30%"
                         center>
@@ -111,11 +110,43 @@
                         <el-form-item label="业务员">
                             <el-input v-model="form.userName" placeholder="业务员" disabled></el-input>
                         </el-form-item>
+                        <el-form-item label="详情">
+                            <el-input v-model="form.detail" placeholder="详情"></el-input>
+                        </el-form-item>
+                        <el-form-item label="金额">
+                            <el-input v-model="form.money" placeholder="金额"></el-input>
+                        </el-form-item>
 
                     </el-form>
                     <span slot="footer" class="dialog-footer">
                         <el-button type="primary" @click="addWrittenRecords">添加</el-button>
-                        <el-button @click="addWrittenRecordsShow = false">取消</el-button>
+                        <el-button @click="cancelAddWrittenRecordsShow">取消</el-button>
+                    </span>
+                </el-dialog>
+
+                <el-dialog
+                        title="修改签单记录"
+                        :visible.sync="editWrittenRecordsShow"
+                        width="30%"
+                        center>
+                    <el-form ref="form" label-width="70px" :model="form2">
+                        <el-form-item label="客户">
+                            <el-input v-model="form2.customerName" placeholder="客户名称"></el-input>
+                        </el-form-item>
+                        <el-form-item label="业务员">
+                            <el-input v-model="form2.userName" placeholder="业务员" disabled></el-input>
+                        </el-form-item>
+                        <el-form-item label="详情">
+                            <el-input v-model="form2.detail" placeholder="详情"></el-input>
+                        </el-form-item>
+                        <el-form-item label="金额">
+                            <el-input v-model="form2.money" placeholder="金额"></el-input>
+                        </el-form-item>
+
+                    </el-form>
+                    <span slot="footer" class="dialog-footer">
+                        <el-button type="primary" @click="editWrittenRecordsClick">确定</el-button>
+                        <el-button @click="cancelEditWrittenRecordsShow">取消</el-button>
                     </span>
                 </el-dialog>
 
@@ -130,8 +161,13 @@
         data() {
             return {
                 user: '',
-                status: '',
                 addWrittenRecordsShow: false,
+                editWrittenRecordsShow: false,
+                page: 1,
+                size: 10,
+                total: 10,
+                // 当前被选中行的writtenId
+                currentSelectedWrittenId: '',
                 options: [
                     {
                         value: '选项1',
@@ -156,23 +192,285 @@
                         money: 12.25,
                     },
                 ],
-                multipleSelection: [],
-                form: {}
+                form: {},
+                form2: {},
             }
         },
+        created() {
+            this.init();
+        },
         methods: {
+            init() {
+                const loading = this.$loading({
+                    lock: true,
+                    text: 'Loading',
+                    spinner: 'el-icon-loading',
+                    background: 'rgba(0, 0, 0, 0.2)',
+                });
+                this.$axios.get('/written/findAllWrittenByPage/' + this.$route.params.id + '/' + this.page + '/' + this.size).then(res => {
+                    loading.close();
+                    this.tableData = res.data.data.content;
+                    this.total = res.data.data.totalElements;
+                }).catch(() => {
+                    loading.close();
+                    this.$alert('当前网络不通......', '', {
+                        type: 'error',
+                        confirmButtonText: '确定',
+                    });
+                });
+            },
+            // 每页显示数量改变
             handleSizeChange(val) {
-                console.log(`每页 ${val} 条`);
+                this.size = val;
+                const loading = this.$loading({
+                    lock: true,
+                    text: 'Loading',
+                    spinner: 'el-icon-loading',
+                    background: 'rgba(0, 0, 0, 0.2)',
+                });
+                this.$axios.get('/written/findAllWrittenByPage/' + this.$route.params.id + '/' + this.page + '/' + this.size).then(res => {
+                    loading.close();
+                    this.tableData = res.data.data.content;
+                    this.total = res.data.data.totalElements;
+                }).catch(() => {
+                    loading.close();
+                    this.$alert('当前网络不通......', '', {
+                        type: 'error',
+                        confirmButtonText: '确定',
+                    });
+                });
             },
-            handleCurrentChange(val) {
-                console.log(`当前页: ${val}`);
-            },
-            handleSelectionChange() {
 
+            // 翻页
+            handleCurrentChange(val) {
+                this.page = val;
+                const loading = this.$loading({
+                    lock: true,
+                    text: 'Loading',
+                    spinner: 'el-icon-loading',
+                    background: 'rgba(0, 0, 0, 0.2)',
+                });
+                this.$axios.get('/written/findAllWrittenByPage/' + this.$route.params.id + '/' + this.page + '/' + this.size).then(res => {
+                    loading.close();
+                    this.tableData = res.data.data.content;
+                    this.total = res.data.data.totalElements;
+                }).catch(() => {
+                    loading.close();
+                    this.$alert('当前网络不通......', '', {
+                        type: 'error',
+                        confirmButtonText: '确定',
+                    });
+                });
+            },
+            // 添加签单记录点击显示对话框
+            addWrittenRecordsShowClick() {
+
+                const loading = this.$loading({
+                    lock: true,
+                    text: 'Loading',
+                    spinner: 'el-icon-loading',
+                    background: 'rgba(0, 0, 0, 0.2)',
+                });
+
+                this.$axios.get('/user/getUserDTO', {withCredentials: true}).then(res => {
+                    loading.close();
+                    this.form.userName = res.data.data.userName;
+                    this.addWrittenRecordsShow = true
+                }).catch(() => {
+                    loading.close();
+                    this.$alert('当前网络不通......', '', {
+                        type: 'error',
+                        confirmButtonText: '确定',
+                    });
+                });
+            },
+            cancelAddWrittenRecordsShow() {
+                this.addWrittenRecordsShow = false;
+                this.form.customerName = '';
+                this.form.userName = '';
+                this.form.detail = '';
+                this.form.money = null;
             },
             addWrittenRecords() {
-
+                if (this.form.customerName === '') {
+                    this.$alert('客户名称不能为空', '', {
+                        type: 'error',
+                        confirmButtonText: '确定',
+                    });
+                } else if (this.form.detail === '') {
+                    this.$alert('详情不能为空', '', {
+                        type: 'error',
+                        confirmButtonText: '确定',
+                    });
+                } else if (this.form.money === '') {
+                    this.$alert('金额不能为空', '', {
+                        type: 'error',
+                        confirmButtonText: '确定',
+                    });
+                } else {
+                    const loading = this.$loading({
+                        lock: true,
+                        text: 'Loading',
+                        spinner: 'el-icon-loading',
+                        background: 'rgba(0, 0, 0, 0.2)',
+                    });
+                    const data = {
+                        customerName: this.form.customerName,
+                        userName: this.form.userName,
+                        detail: this.form.detail,
+                        money: parseFloat(this.form.money),
+                    };
+                    this.$axios.post('/written/addWritten', this.$qs.stringify(data)).then(() => {
+                        loading.close();
+                        this.$alert('添加成功 ', '', {
+                            type: 'success',
+                            confirmButtonText: '确定',
+                        }).then(() => {
+                            this.addWrittenRecordsShow = false;
+                            this.form.userName = '';
+                            this.form.customerName = '';
+                            this.form.detail = '';
+                            this.form.money = '';
+                            this.init();
+                        });
+                    }).catch(() => {
+                        loading.close();
+                        this.$alert('添加失败', '', {
+                            type: 'error',
+                            confirmButtonText: '确定',
+                        });
+                        this.addWrittenRecordsShow = false;
+                        this.form.userName = '';
+                        this.form.customerName = '';
+                        this.form.detail = '';
+                        this.form.money = '';
+                    })
+                }
             },
+            editWrittenRecordsShowClick(row) {
+
+                this.editWrittenRecordsShow = true;
+
+                const loading = this.$loading({
+                    lock: true,
+                    text: 'Loading',
+                    spinner: 'el-icon-loading',
+                    background: 'rgba(0, 0, 0, 0.2)',
+                });
+                this.currentSelectedWrittenId = row.writtenId;
+                this.$axios.get('/written/findWrittenByWrittenId/' + row.writtenId).then(res => {
+                    loading.close();
+                    this.form2 = res.data.data;
+                    this.form2.userName = res.data.data.userName;
+                    this.editWrittenRecordsShow = true
+                }).catch(() => {
+                    loading.close();
+                    this.currentSelectedWrittenId = '';
+                    this.$alert('当前网络不通......', '', {
+                        type: 'error',
+                        confirmButtonText: '确定',
+                    });
+                });
+            },
+            editWrittenRecordsClick() {
+                if (this.form2.customerName === '') {
+                    this.$alert('客户名称不能为空', '', {
+                        type: 'error',
+                        confirmButtonText: '确定',
+                    });
+                } else if (this.form2.detail === '') {
+                    this.$alert('详情不能为空', '', {
+                        type: 'error',
+                        confirmButtonText: '确定',
+                    });
+                } else if (this.form2.money === '') {
+                    this.$alert('金额不能为空', '', {
+                        type: 'error',
+                        confirmButtonText: '确定',
+                    });
+                } else {
+                    const loading = this.$loading({
+                        lock: true,
+                        text: 'Loading',
+                        spinner: 'el-icon-loading',
+                        background: 'rgba(0, 0, 0, 0.2)',
+                    });
+                    const data = {
+                        customerName: this.form2.customerName,
+                        userName: this.form2.userName,
+                        detail: this.form2.detail,
+                        money: parseFloat(this.form2.money),
+                    };
+                    this.$axios.post('/written/updateWrittenByWrittenId/' +this.currentSelectedWrittenId, this.$qs.stringify(data)).then(() => {
+                        loading.close();
+                        this.$alert('修改成功 ', '', {
+                            type: 'success',
+                            confirmButtonText: '确定',
+                        }).then(() => {
+                            this.editWrittenRecordsShow = false;
+                            this.form2.customerName = '';
+                            this.form2.userName = '';
+                            this.form2.detail = '';
+                            this.form2.money = '';
+                            this.currentSelectedWrittenId = '';
+                            this.init();
+                        });
+                    }).catch(() => {
+                        loading.close();
+                        this.$alert('修改失败', '', {
+                            type: 'error',
+                            confirmButtonText: '确定',
+                        });
+                    })
+                }
+            },
+            cancelEditWrittenRecordsShow() {
+                this.editWrittenRecordsShow = false;
+                this.form2.customerName = '';
+                this.form2.userName = '';
+                this.form2.detail = '';
+                this.form2.money = '';
+                this.currentSelectedWrittenId = '';
+            },
+            deleteWrittenRecordsClick(row) {
+
+                const loading = this.$loading({
+                    lock: true,
+                    text: 'Loading',
+                    spinner: 'el-icon-loading',
+                    background: 'rgba(0, 0, 0, 0.2)',
+                });
+
+
+                this.$confirm('此操作将永久删除该客户, 是否继续?', '提示', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    type: 'warning'
+                }).then(() => {
+                    this.$axios.delete('/written/deleteWrittenByWrittenId/' + row.writtenId).then(() => {
+                        loading.close();
+                        this.$message({
+                            type: 'success',
+                            message: '删除成功!'
+                        });
+                        this.init();
+                    }).catch(() => {
+                        loading.close();
+                        this.$alert('删除失败', '', {
+                            type: 'error',
+                            confirmButtonText: '确定',
+                        });
+                    });
+
+                }).catch(() => {
+                    this.$message({
+                        type: 'info',
+                        message: '已取消删除'
+                    });
+                    loading.close();
+                });
+            },
+
         },
     }
 </script>

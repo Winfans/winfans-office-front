@@ -10,7 +10,7 @@
                         <div slot="header" class="clearfix">
                             <span class="font-size-14 font-weight-bold">{{menu.mainMenuName}}</span>
                         </div>
-                        <div class="card hover-background-409EFF" v-for="submenu in menu.submenus"
+                        <router-link tag="div" to="/aa" class="card hover-background-409EFF" style="cursor:pointer;"  v-for="submenu in menu.submenus"
                              :key="menu.submenuId">
                             <div class="card-left">
                                 <i class="iconfont" :class="submenu.submenuIcon" style=""></i>
@@ -24,7 +24,7 @@
                                 </p>
 
                             </div>
-                        </div>
+                        </router-link>
                     </el-card>
                 </el-col>
             </el-row>

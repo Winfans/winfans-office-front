@@ -5,22 +5,22 @@
             <ul>
                 <li v-for="(tab, index) in tabs" :key="index" @mouseenter="mouseEnterTab(index + 1)">
                     <i class="iconfont" :class="tab.icon"></i>
-                    <div class="tab-title" >{{tab.title}}</div>
+                    <div class="tab-title">{{tab.title}}</div>
                 </li>
             </ul>
             <div class="tab-item">
 
-                    <div v-for="(menu, index) in menus" :key="index" v-show="menu.isShow">
-                        <ul>
-                            <li v-for="(submenu, index) in menu.submenus" :key="index">
-                                <i class="iconfont" :class="submenu.icon"></i>
-                                <p style="padding: 10px;font-weight: bold;font-size:28px;">{{submenu.title}}</p>
-                                <p style="font-size: 15px;padding-bottom: 10px;">{{submenu.description}}</p>
-                                <el-button size="small" type="danger" round>了解 更多
-                                </el-button>
-                            </li>
-                        </ul>
-                    </div>
+                <div v-for="(menu, index) in menus" :key="index" v-show="menu.isShow">
+                    <ul>
+                        <li v-for="(submenu, index) in menu.submenus" :key="index">
+                            <i class="iconfont" :class="submenu.icon"></i>
+                            <p style="padding: 10px;font-weight: bold;font-size:28px;">{{submenu.title}}</p>
+                            <p style="font-size: 15px;padding-bottom: 10px;">{{submenu.description}}</p>
+                            <el-button size="small" type="danger" round @click="moreClick">了解 更多
+                            </el-button>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
@@ -170,24 +170,17 @@
         },
         methods: {
             mouseEnterTab: function (index) {
-
-
                 this.menus.forEach(ele => {
                     if (ele.id === index) {
                         ele.isShow = true;
                         this.$('.tab ul li .tab-title')
                             .eq(ele.id - 1)
                             .addClass('tab-active');
-                        // this.$set(ele, 'tabActive', 'tab-active');
-                        // tabTitleDiv.color = "#F56C6C";
-                        // tabTitleDiv.borderBottom = "";
                     } else {
                         ele.isShow = false;
                         ele.tabActive = '';
                         this.$('.tab ul li .tab-title')
                             .eq(ele.id - 1).removeClass('tab-active');
-                        // tabTitleDiv.color = "#000";
-                        // tabTitleDiv.borderBottom = "none";
                     }
                 })
             },
@@ -198,6 +191,9 @@
                     }
                 })
             },
+            moreClick() {
+                this.$router.push("/aa");
+            }
         }
     }
 </script>
@@ -205,33 +201,43 @@
 <style scoped lang="less">
     #main {
         overflow-x: hidden;
+
         .tab {
             padding-top: 50px;
+
             ul {
                 height: 120px;
                 width: 1000px;
                 margin: 0 auto;
+
                 li {
                     cursor: pointer;
                     text-align: center;
                     width: 200px;
                     display: inline-block;
                     color: rgba(0, 0, 0, .7);
+                    &:hover {
+                        i {
+                            display: inline-block;
+                            transform: rotate(360deg);
+                            transition: all 1s ease;
+                        }
+                    }
                     i {
                         font-size: 60px;
                         color: rgba(0, 0, 0, .5);
                     }
-
                     div {
                         padding: 15px 0;
                         width: 50px;
                         margin: 0 auto;
                         text-align: center;
                         /*&:hover {*/
-                            /*color: #F56C6C;*/
-                            /*border-bottom: 4px solid #F56C6C;*/
+                        /*color: #F56C6C;*/
+                        /*border-bottom: 4px solid #F56C6C;*/
                         /*}*/
                     }
+
                     div.tab-active {
                         transition: all .2s ease;
                         color: #F56C6C;
@@ -239,21 +245,24 @@
                     }
                 }
             }
+
             .tab-item {
                 padding: 20px 0;
                 width: 100%;
                 height: 300px;
                 background-color: whitesmoke;
                 position: absolute;
+
                 ul {
                     width: 90%;
                     height: 210px;
                     position: absolute;
-                    top: calc(50%  - 100px);
+                    top: calc(50% - 100px);
                     left: 0;
                     right: 0;
                     bottom: 0;
                     margin: 0 auto;
+
                     li {
                         padding-top: 15px;
                         border-radius: 5px;

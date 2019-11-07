@@ -12,12 +12,17 @@ import moment from 'moment'
 import VueCookies from 'vue-cookies'
 import JQuery from 'jquery';
 
+import 'fullpage.js/vendors/scrolloverflow';
+import VueFullPage from 'vue-fullpage.js';
 
 Vue.use(VueCookies);
 
+// 使用fullpage.js插件
+Vue.use(VueFullPage);
+
 
 Vue.config.productionTip = false;
-
+Vue.prototype.HOME_URL = "http://localhost:8080";
 Vue.prototype.BASE_URL = "http://localhost:12649";
 Vue.prototype.$qs = qs;
 Vue.prototype.$moment = moment;
