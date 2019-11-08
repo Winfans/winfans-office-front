@@ -277,7 +277,7 @@
                     spinner: 'el-icon-loading',
                     background: 'rgba(0, 0, 0, 0.2)',
                 });
-                this.$axios.get('/customer/findAllCustomerTeamIdAndByPage/' + this.$route.params.id + '/' + this.page + '/' + this.size).then(res => {
+                this.$axios.get(this.API_URL + '/customer/findAllCustomerTeamIdAndByPage/' + this.$route.params.id + '/' + this.page + '/' + this.size).then(res => {
                     loading.close();
                     this.tableData = res.data.data.content;
                     this.total = res.data.data.totalElements;
@@ -298,7 +298,7 @@
                     spinner: 'el-icon-loading',
                     background: 'rgba(0, 0, 0, 0.2)',
                 });
-                this.$axios.get('/customer/findAllCustomerTeamIdAndByPage/' + this.$route.params.id + '/' + this.page + '/' + this.size).then(res => {
+                this.$axios.get(this.API_URL +'/customer/findAllCustomerTeamIdAndByPage/' + this.$route.params.id + '/' + this.page + '/' + this.size).then(res => {
                     loading.close();
                     this.tableData = res.data.data.content;
                     this.total = res.data.data.totalElements;
@@ -320,7 +320,7 @@
                     spinner: 'el-icon-loading',
                     background: 'rgba(0, 0, 0, 0.2)',
                 });
-                this.$axios.get('/customer/findAllCustomerTeamIdAndByPage/' + this.$route.params.id + '/' + this.page + '/' + this.size).then(res => {
+                this.$axios.get(this.API_URL +'/customer/findAllCustomerTeamIdAndByPage/' + this.$route.params.id + '/' + this.page + '/' + this.size).then(res => {
                     loading.close();
                     this.tableData = res.data.data.content;
                     this.total = res.data.data.totalElements;
@@ -346,7 +346,7 @@
                     background: 'rgba(0, 0, 0, 0.2)',
                 });
 
-                this.$axios.get('/user/getUserDTO', {withCredentials: true}).then(res => {
+                this.$axios.get(this.API_URL +'/user/getUserDTO', {withCredentials: true}).then(res => {
                     loading.close();
                     this.form.userName = res.data.data.userName;
                     this.addCustomerShow = true
@@ -374,7 +374,7 @@
                     background: 'rgba(0, 0, 0, 0.2)',
                 });
 
-                this.$axios.get('/customer/findCustomerByCustomerId/' + this.multipleSelection[0].customerId).then(res => {
+                this.$axios.get(this.API_URL +'/customer/findCustomerByCustomerId/' + this.multipleSelection[0].customerId).then(res => {
                     loading.close();
                     this.form2 = res.data.data;
                     this.form2.status = String(this.form2.status);
@@ -414,7 +414,7 @@
                     const param = {
                         customerIdList: this.customerIdList.join(",")
                     };
-                    this.$axios.delete('/customer/deleteCustomerByCustomerId', {params: param}).then(() => {
+                    this.$axios.delete(this.API_URL +'/customer/deleteCustomerByCustomerId', {params: param}).then(() => {
                         this.multipleSelection = [];
                         this.customerIdList = [];
                         loading.close();
@@ -466,8 +466,7 @@
                         // teamId: this.$route.params.id
 
                     };
-                    console.log(data);
-                    this.$axios.post('/customer/updateCustomerByCustomerId/' + this.multipleSelection[0].customerId, this.$qs.stringify(data)).then(() => {
+                    this.$axios.post(this.API_URL +'/customer/updateCustomerByCustomerId/' + this.multipleSelection[0].customerId, this.$qs.stringify(data)).then(() => {
                         loading.close();
                         this.$alert('修改成功 ', '', {
                             type: 'success',
@@ -513,7 +512,7 @@
                         status: parseInt(this.form.status),
                         teamId: this.$route.params.id
                     };
-                    this.$axios.post('/customer/addCustomer', this.$qs.stringify(data)).then(() => {
+                    this.$axios.post(this.API_URL +'/customer/addCustomer', this.$qs.stringify(data)).then(() => {
                         loading.close();
                         this.$alert('添加成功 ', '', {
                             type: 'success',

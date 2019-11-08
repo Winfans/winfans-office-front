@@ -88,7 +88,7 @@
                     spinner: 'el-icon-loading',
                     background: 'rgba(0, 0, 0, 0.2)',
                 });
-                this.$axios.get('/team/findAllUserTeamByTeamId/' + this.$route.params.id).then(res => {
+                this.$axios.get(this.API_URL +'/team/findAllUserTeamByTeamId/' + this.$route.params.id).then(res => {
                     loading.close();
                     this.tableData = res.data.data;
                 }).catch(() => {
@@ -123,7 +123,7 @@
                     const data = {
                         userName: this.form.userName,
                     };
-                    this.$axios.post('/team/addTeamUserByTeamId/' + this.$route.params.id, this.$qs.stringify(data)).then(() => {
+                    this.$axios.post(this.API_URL +'/team/addTeamUserByTeamId/' + this.$route.params.id, this.$qs.stringify(data)).then(() => {
                         loading.close();
                         this.$alert('添加成功 ', '', {
                             type: 'success',
@@ -166,7 +166,7 @@
                     cancelButtonText: '取消',
                     type: 'warning'
                 }).then(() => {
-                    this.$axios.delete('/team/deleteTeamUserByUserIdAndTeamId/' + this.$route.params.id, {params: param}).then(() => {
+                    this.$axios.delete(this.API_URL +'/team/deleteTeamUserByUserIdAndTeamId/' + this.$route.params.id, {params: param}).then(() => {
                         loading.close();
                         this.$message({
                             type: 'success',

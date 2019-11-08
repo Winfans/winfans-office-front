@@ -52,7 +52,7 @@
                 background: 'rgba(0, 0, 0, 0.2)',
             });
 
-            this.axios.get('/menu/findAllMenu').then(res => {
+            this.axios.get(this.API_URL + '/menu/findAllMenu').then(res => {
                 this.menus = res.data.data;
                 loading.close();
             }).catch(() => {

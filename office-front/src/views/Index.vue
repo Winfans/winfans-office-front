@@ -74,7 +74,7 @@
                 spinner: 'el-icon-loading',
                 background: 'rgba(0, 0, 0, 0.2)',
             });
-            this.$axios.get('/user/getUserDTO').then(res => {
+            this.$axios.get(this.API_URL +'/user/getUserDTO').then(res => {
                 this.user = res.data.data;
                 loading.close();
 

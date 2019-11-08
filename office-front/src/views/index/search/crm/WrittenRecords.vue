@@ -207,7 +207,7 @@
                     spinner: 'el-icon-loading',
                     background: 'rgba(0, 0, 0, 0.2)',
                 });
-                this.$axios.get('/written/findAllWrittenByPage/' + this.$route.params.id + '/' + this.page + '/' + this.size).then(res => {
+                this.$axios.get(this.API_URL +'/written/findAllWrittenByPage/' + this.$route.params.id + '/' + this.page + '/' + this.size).then(res => {
                     loading.close();
                     this.tableData = res.data.data.content;
                     this.total = res.data.data.totalElements;
@@ -228,7 +228,7 @@
                     spinner: 'el-icon-loading',
                     background: 'rgba(0, 0, 0, 0.2)',
                 });
-                this.$axios.get('/written/findAllWrittenByPage/' + this.$route.params.id + '/' + this.page + '/' + this.size).then(res => {
+                this.$axios.get(this.API_URL +'/written/findAllWrittenByPage/' + this.$route.params.id + '/' + this.page + '/' + this.size).then(res => {
                     loading.close();
                     this.tableData = res.data.data.content;
                     this.total = res.data.data.totalElements;
@@ -250,7 +250,7 @@
                     spinner: 'el-icon-loading',
                     background: 'rgba(0, 0, 0, 0.2)',
                 });
-                this.$axios.get('/written/findAllWrittenByPage/' + this.$route.params.id + '/' + this.page + '/' + this.size).then(res => {
+                this.$axios.get(this.API_URL +'/written/findAllWrittenByPage/' + this.$route.params.id + '/' + this.page + '/' + this.size).then(res => {
                     loading.close();
                     this.tableData = res.data.data.content;
                     this.total = res.data.data.totalElements;
@@ -272,7 +272,7 @@
                     background: 'rgba(0, 0, 0, 0.2)',
                 });
 
-                this.$axios.get('/user/getUserDTO', {withCredentials: true}).then(res => {
+                this.$axios.get(this.API_URL +'/user/getUserDTO', {withCredentials: true}).then(res => {
                     loading.close();
                     this.form.userName = res.data.data.userName;
                     this.addWrittenRecordsShow = true
@@ -320,7 +320,7 @@
                         detail: this.form.detail,
                         money: parseFloat(this.form.money),
                     };
-                    this.$axios.post('/written/addWritten', this.$qs.stringify(data)).then(() => {
+                    this.$axios.post(this.API_URL +'/written/addWritten', this.$qs.stringify(data)).then(() => {
                         loading.close();
                         this.$alert('添加成功 ', '', {
                             type: 'success',
@@ -358,7 +358,7 @@
                     background: 'rgba(0, 0, 0, 0.2)',
                 });
                 this.currentSelectedWrittenId = row.writtenId;
-                this.$axios.get('/written/findWrittenByWrittenId/' + row.writtenId).then(res => {
+                this.$axios.get(this.API_URL +'/written/findWrittenByWrittenId/' + row.writtenId).then(res => {
                     loading.close();
                     this.form2 = res.data.data;
                     this.form2.userName = res.data.data.userName;
@@ -401,7 +401,7 @@
                         detail: this.form2.detail,
                         money: parseFloat(this.form2.money),
                     };
-                    this.$axios.post('/written/updateWrittenByWrittenId/' +this.currentSelectedWrittenId, this.$qs.stringify(data)).then(() => {
+                    this.$axios.post(this.API_URL +'/written/updateWrittenByWrittenId/' +this.currentSelectedWrittenId, this.$qs.stringify(data)).then(() => {
                         loading.close();
                         this.$alert('修改成功 ', '', {
                             type: 'success',
@@ -447,7 +447,7 @@
                     cancelButtonText: '取消',
                     type: 'warning'
                 }).then(() => {
-                    this.$axios.delete('/written/deleteWrittenByWrittenId/' + row.writtenId).then(() => {
+                    this.$axios.delete(this.API_URL +'/written/deleteWrittenByWrittenId/' + row.writtenId).then(() => {
                         loading.close();
                         this.$message({
                             type: 'success',

@@ -53,7 +53,7 @@
                 background: 'rgba(0, 0, 0, 0.2)',
             });
 
-            this.axios.get('/menu/findAllSubmenu').then(res => {
+            this.axios.get(this.API_URL +'/menu/findAllSubmenu').then(res => {
                 loading.close();
                 this.submenus = res.data.data;
             }).then(() => {
@@ -93,7 +93,7 @@
                         teamName: this.form.teamName,
                     };
                     if (this.submenu.homePath) {
-                        this.$axios.post('/team/createTeam', this.$qs.stringify(data)).then(() => {
+                        this.$axios.post(this.API_URL +'/team/createTeam', this.$qs.stringify(data)).then(() => {
                             loading.close();
                             this.$alert('创建成功', '', {
                                 type: 'success',

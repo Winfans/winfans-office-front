@@ -102,7 +102,7 @@
                         userName: this.form.userName,
                         userPasswd: this.form.userPasswd
                     };
-                    this.$axios.post('/user/register', this.$qs.stringify(data)).then(() => {
+                    this.$axios.post(this.API_URL +'/user/register', this.$qs.stringify(data)).then(() => {
                         loading.close();
                         this.$alert('注册成功', '', {
                             type: 'success',

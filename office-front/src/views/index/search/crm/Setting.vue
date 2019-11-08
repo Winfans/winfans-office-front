@@ -47,7 +47,7 @@
                     background: 'rgba(0, 0, 0, 0.2)',
                 });
 
-                this.$axios.get('/team/findTeamByTeamId/' + this.$route.params.id).then(res => {
+                this.$axios.get(this.API_URL +'/team/findTeamByTeamId/' + this.$route.params.id).then(res => {
                     this.teamName = res.data.data.teamName;
                     loading.close();
                 }).catch(() => {

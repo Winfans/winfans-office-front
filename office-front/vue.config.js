@@ -21,27 +21,7 @@ module.exports = {
         port: 8080,//端口
         disableHostCheck: true,
         proxy: {
-            '/menu': {
-                target: 'http://localhost:12649',
-                changeOrigin: true
-            },
-            '/auth': {
-                target: 'http://localhost:12649',
-                changeOrigin: true
-            },
-            '/team': {
-                target: 'http://localhost:12649',
-                changeOrigin: true
-            },
-            '/user': {
-                target: 'http://localhost:12649',
-                changeOrigin: true
-            },
-            '/customer': {
-                target: 'http://localhost:12649',
-                changeOrigin: true
-            },
-            '/written': {
+            '/office-api': {
                 target: 'http://localhost:12649',
                 changeOrigin: true
             },

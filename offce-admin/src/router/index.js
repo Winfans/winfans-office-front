@@ -152,7 +152,7 @@ export const constantRoutes = [
     component: Layout,
     children: [
       {
-        path: 'http://localhost:8080/office/officeHome/main',
+        path: 'http://www.wffanshao.top/office/officeHome/main',
         meta: { title: '返回主页', icon: 'link' }
       }
     ]

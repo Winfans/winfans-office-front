@@ -80,8 +80,7 @@
             },
             // 点击退出团队
             leaveTeamClick () {
-                // this.isShowDialog = true;
-                alert("test")
+
             },
 
         },
@@ -94,7 +93,7 @@
                 background: 'rgba(0, 0, 0, 0.2)',
             });
 
-            this.$axios.get('/auth/verify', {withCredentials: true}).then(() => {
+            this.$axios.get(this.API_URL +'/auth/verify', {withCredentials: true}).then(() => {
             }).catch(() => {
                 this.$message({
                     showClose: true,
@@ -104,7 +103,7 @@
                 });
             });
 
-            this.$axios.get('/team/findAllTeam').then(res => {
+            this.$axios.get(this.API_URL +'/team/findAllTeam').then(res => {
                 this.hasTeam = res.data.data.length === 0;
                 this.teams = res.data.data;
                 loading.close();

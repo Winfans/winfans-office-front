@@ -30,13 +30,17 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 import axios from 'axios'
+
 Vue.prototype.$axios = axios
 
 import qs from 'qs'
-Vue.prototype.$qs = qs;
 
+Vue.prototype.$qs = qs
 
-Vue.prototype.API_URL = 'http://localhost:12649'
+Vue.prototype.BASE_URL = 'http://www.wffanshao.top'
+// Vue.prototype.BASE_URL = 'http://localhost'
+// Vue.prototype.API_URL = 'http://localhost:12649/office-api'
+Vue.prototype.API_URL = 'http://www.wffanshao.top:12649/office-api'
 
 // set ElementUI lang to EN
 Vue.use(ElementUI, { locale })

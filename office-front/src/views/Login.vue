@@ -64,7 +64,7 @@
                         userName: this.form.userName,
                         userPasswd: this.form.userPasswd
                     };
-                    this.$axios.post('/auth/auth', this.$qs.stringify(data)).then(() => {
+                    this.$axios.post(this.API_URL +'/auth/auth', this.$qs.stringify(data)).then(() => {
                         loading.close();
                         this.$router.push({
                             name: 'Index',

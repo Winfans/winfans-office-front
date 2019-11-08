@@ -68,8 +68,9 @@
                         <h3 class="title">二狗云办公导航三</h3>
                     </div>
                     <ul>
-                        <a href="http://localhost:9528/officeAdmin/#/login">
-                            <li>
+<!--                        <a href="http://localhost:9528/officeAdmin/#/login">-->
+                        <a href="http://www.wffanshao.top/officeAdmin/#/login">
+                        <li>
                                 <i class="iconfont icon-youxi  btn-top"></i>
                                 <div class="btn-box">
                                     <span>后台管理登录</span>
@@ -77,8 +78,8 @@
                                 </div>
                             </li>
                         </a>
-                        <a href="http://localhost:9528/officeAdmin/#/example/table">
-
+                        <a href="http://www.wffanshao.top/officeAdmin/#/example/table">
+<!--                            <a href="http://localhost:9528/officeAdmin/#/example/table">-->
                             <li>
                                 <i class="iconfont icon-feiji btn-top"></i>
                                 <div class="btn-box">
@@ -87,7 +88,8 @@
                                 </div>
                             </li>
                         </a>
-                        <a href="http://localhost:9528/officeAdmin/#/form/index">
+<!--                        <a href="http://localhost:9528/officeAdmin/#/form/index">-->
+                        <a href="http://www.wffanshao.top/officeAdmin/#/form/index">
 
                             <li>
                                 <i class="iconfont icon-huojian btn-top"></i>

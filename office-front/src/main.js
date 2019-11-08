@@ -22,8 +22,10 @@ Vue.use(VueFullPage);
 
 
 Vue.config.productionTip = false;
-Vue.prototype.HOME_URL = "http://localhost:8080";
-Vue.prototype.BASE_URL = "http://localhost:12649";
+// Vue.prototype.HOME_URL = "http://localhost:8080";
+Vue.prototype.API_URL = "/office-api";
+Vue.prototype.HOME_URL = "http://www.wffanshao.top";
+// Vue.prototype.API_URL = "http://www.wffanshao.top:12649";
 Vue.prototype.$qs = qs;
 Vue.prototype.$moment = moment;
 Vue.prototype.$ = JQuery;
