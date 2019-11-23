@@ -153,7 +153,7 @@ export const constantRoutes = [
     children: [
       {
         path: 'http://www.wffanshao.top/office/officeHome/main',
-        meta: { title: '返回主页', icon: 'link' }
+        meta: { title: '平台首页', icon: 'link' }
       }
     ]
   },

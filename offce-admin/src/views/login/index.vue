@@ -1,9 +1,9 @@
 <template>
-  <div class="login-container"  style=" background-image: url(/img/bg.jpg);">
+  <div class="login-container">
     <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" auto-complete="on" label-position="left">
 
       <div class="title-container">
-        <h3 class="title">二狗后台管理</h3>
+        <h3 class="title">二狗办公后台管理</h3>
       </div>
 
       <el-form-item prop="username">
@@ -145,6 +145,7 @@ $cursor: #fff;
 
 /* reset element-ui css */
 .login-container {
+  background-image: url('../../assets/images/bg/bg.jpg');
   .el-input {
     display: inline-block;
     height: 47px;

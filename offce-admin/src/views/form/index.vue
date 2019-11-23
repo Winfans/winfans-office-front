@@ -1,15 +1,15 @@
 <template>
-  <div class="app-container">
-    <el-form ref="form" :model="form" label-width="120px">
-      <el-form-item label="用户名">
-        <el-input v-model="form.userName" placeholder="用户名" prefix-icon="el-icon-user"></el-input>
+  <div class="app-container" style="width: 100%;">
+    <el-form ref="form" :model="form" label-width="120px" style="width:40%;margin: 0 auto;">
+      <el-form-item label="用户名" >
+        <el-input style="width: 300px;" v-model="form.userName" placeholder="用户名" prefix-icon="el-icon-user"></el-input>
       </el-form-item>
       <el-form-item label="密码">
-        <el-input v-model="form.userPasswd" placeholder="密码" show-password
+        <el-input v-model="form.userPasswd" style="width: 300px;" placeholder="密码" show-password
                   prefix-icon="el-icon-lock"></el-input>
       </el-form-item>
       <el-form-item label="确认密码">
-        <el-input v-model="form.ConfirmUserPasswd" placeholder="确认密码" show-password
+        <el-input v-model="form.ConfirmUserPasswd" style="width: 300px;" placeholder="确认密码" show-password
                   prefix-icon="el-icon-lock"></el-input>
       </el-form-item>
       <el-form-item>
@@ -34,8 +34,8 @@
     },
     mounted() {
       this.$axios.get(this.API_URL + '/user/findAllUserByPage').then(res => {
-        loading.close();
-        this.list = res.data.data;
+        loading.close()
+        this.list = res.data.data
       }).catch(() => {
         loading.close()
         this.$alert('当前网络不通......', '', {
