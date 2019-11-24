@@ -150,10 +150,12 @@
     @import "../assets/less/initial";
 
     #register {
+        background-image: url("../assets/img/bg/bg1.jpg");
+        background-size: cover;
         width: 100%;
         height: 100%;
         overflow: hidden;
-        background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+        /*background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);*/
         .box-card {
             background-color: transparent;
             border: none;

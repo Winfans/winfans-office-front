@@ -1,7 +1,7 @@
 <template>
     <div id="nav-page">
         <full-page :options="options">
-            <div class="section" style="background: url('../assets/img/bg/bg1.jpg') 100% 100%">
+            <div class="section">
                 <div class="box1">
                     <div class="title-container">
                         <h3 class="title">二狗云办公导航一</h3>
@@ -68,9 +68,9 @@
                         <h3 class="title">二狗云办公导航三</h3>
                     </div>
                     <ul>
-<!--                        <a href="http://localhost:9528/officeAdmin/#/login">-->
+                        <!--                        <a href="http://localhost:9528/officeAdmin/#/login">-->
                         <a href="http://www.wffanshao.top/officeAdmin/#/login">
-                        <li>
+                            <li>
                                 <i class="iconfont icon-youxi  btn-top"></i>
                                 <div class="btn-box">
                                     <span>后台管理登录</span>
@@ -79,7 +79,7 @@
                             </li>
                         </a>
                         <a href="http://www.wffanshao.top/officeAdmin/#/example/table">
-<!--                            <a href="http://localhost:9528/officeAdmin/#/example/table">-->
+                            <!--                            <a href="http://localhost:9528/officeAdmin/#/example/table">-->
                             <li>
                                 <i class="iconfont icon-feiji btn-top"></i>
                                 <div class="btn-box">
@@ -88,7 +88,7 @@
                                 </div>
                             </li>
                         </a>
-<!--                        <a href="http://localhost:9528/officeAdmin/#/form/index">-->
+                        <!--                        <a href="http://localhost:9528/officeAdmin/#/form/index">-->
                         <a href="http://www.wffanshao.top/officeAdmin/#/form/index">
 
                             <li>
@@ -123,18 +123,31 @@
                     menu: '#menu',
                     slidesNavPosition: 'top',
                     anchors: ['page1', 'page2', 'page3'],
-                    sectionsColor: ['#333', '#333', '#333']
+                    // sectionsColor: ['#333', '#333', '#333']
                 }
 
             }
+        },
+        created() {
         }
     }
 </script>
 
 <style scoped lang="less">
     #nav-page {
-
         .section {
+            .box1 {
+                background-image: url("../assets/img/bg/bg1.jpg");
+                background-size: cover;
+            }
+            .box2 {
+                 background-image: url("../assets/img/bg/bg2.jpg");
+                 background-size: cover;
+             }
+            .box3 {
+                background-image: url("../assets/img/bg/bg3.jpg");
+                background-size: cover;
+            }
             .box1, .box2, .box3 {
                 position: relative;
                 height: 100%;

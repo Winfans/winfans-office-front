@@ -3,6 +3,15 @@ module.exports = {
     productionSourceMap: false,
     //部署应用包时的基本 URL
     publicPath: '/office',
+    pwa: {
+        iconPaths: {
+            favicon32: 'favicon.ico',
+            favicon16: 'favicon.ico',
+            appleTouchIcon: 'favicon.ico',
+            maskIcon: 'favicon.ico',
+            msTileImage: 'favicon.ico'
+        }
+    },
     // css相关配置
     css: {
         // 是否使用css分离插件 ExtractTextPlugin 生产环境下是true,开发环境下是false

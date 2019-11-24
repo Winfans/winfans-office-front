@@ -42,7 +42,21 @@
             </div>
             <router-view></router-view>
         </el-main>
-        <el-footer>
+        <el-footer
+                style="margin-top: 500px;z-index:9999;height: 200px;position:relative;width: 100%;background: #2e3033;">
+            <div style="width: 200px;height: 100px;position: absolute;top: calc(50% - 50px);left: calc(50% - 100px);">
+                <img src="../assets/img/footer/qrcode.jpg" alt="微信号：qq1123642601" style="width: 100px; height: 100px;">
+                <div style="display: inline-block;position: relative;top: -30px;padding-left: 20px;">
+                    <a class="a-hover" target="_blank"
+                       style="text-decoration:none;width: 100px;height: 30px; text-align: center;"
+                       href="https://github.com/Winfans">Github</a>
+                    <br/>
+                    <br/>
+                    <a class="a-hover" target="_blank"
+                       style="text-decoration:none;width: 100px;height: 30px;text-align: center"
+                       href="https://me.csdn.net/qq1123642601">CSDN</a>
+                </div>
+            </div>
         </el-footer>
     </el-container>
 </template>
@@ -156,6 +170,13 @@
             }
 
 
+        }
+
+        .a-hover {
+            color: rgba(255, 255, 255, 0.6);
+            &:hover {
+                color: #fff;
+            }
         }
     }
 </style>
