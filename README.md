@@ -1,1 +1,7 @@
-# winfans-office-front
+# 项目名称
+二狗云办公平台
+# 项目描述
+提供多种办公功能，例如考勤、crm、记账等，本项目暂时只实现了crm功能
+# 技术栈
+vue + element-ui + axios
+
