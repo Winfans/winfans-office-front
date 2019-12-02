@@ -6,6 +6,17 @@
                 <span class="font-color-fff bg_color_transparent">用户注册</span>
             </div>
             <el-form ref="form" :model="form">
+                <el-upload
+                        v-model="form.headImg"
+                        style="overflow:hidden;width: 100px;height: 100px;margin:0 auto 20px;border-radius: 50%;"
+                        class="avatar-uploader"
+                        :action="API_URL + '/upload/image'"
+                        :show-file-list="false"
+                        :on-success="handleAvatarSuccess"
+                        :before-upload="beforeAvatarUpload">
+                    <img v-if="imageUrl" :src="imageUrl" class="avatar">
+                    <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+                </el-upload>
                 <el-form-item>
                     <el-input v-model="form.userName" placeholder="用户名" prefix-icon="el-icon-user"></el-input>
                 </el-form-item>
@@ -46,6 +57,7 @@
         components: {SIdentify, ShootingStar},
         data() {
             return {
+                imageUrl: '',
                 identifyCodes: '1234567890',
                 identifyCode: '',
                 form: {
@@ -53,7 +65,9 @@
                     userPasswd: '',
                     ConfirmUserPasswd: '',
                     identifyCode: '',
-                }
+                    headImg: '',
+                },
+                API_URL: this.API_URL,
             }
         },
         mounted() {
@@ -63,6 +77,30 @@
             this.makeCode(this.identifyCodes, 4)
         },
         methods: {
+
+            handleAvatarSuccess(res, file) {
+                this.imageUrl = URL.createObjectURL(file.raw);
+                this.form.headImg = res.data;
+            },
+
+            beforeAvatarUpload(file) {
+                const isJPG = file.type === 'image/jpeg';
+                const isLt2M = file.size / 1024 / 1024 < 2;
+
+                if (!isJPG) {
+                    this.$alert('上传头像图片只能是 JPG 格式!', '', {
+                        type: 'error',
+                        confirmButtonText: '确定',
+                    });
+                }
+                if (!isLt2M) {
+                    this.$alert('上传头像图片大小不能超过 2MB!', '', {
+                        type: 'error',
+                        confirmButtonText: '确定',
+                    });
+                }
+                return isJPG && isLt2M;
+            },
 
             // 点击注册
             registerClick() {
@@ -100,7 +138,8 @@
                     });
                     const data = {
                         userName: this.form.userName,
-                        userPasswd: this.form.userPasswd
+                        userPasswd: this.form.userPasswd,
+                        headImg: this.form.headImg,
                     };
                     this.$axios.post(this.API_URL +'/user/register', this.$qs.stringify(data)).then(() => {
                         loading.close();
@@ -149,6 +188,7 @@
 <style scoped lang="less">
     @import "../assets/less/initial";
 
+
     #register {
         background-image: url("../assets/img/bg/bg1.jpg");
         background-size: cover;
@@ -161,12 +201,30 @@
             border: none;
             width: 400px;
             position: absolute;
-            top: calc(50% - 200px);
+            top: calc(50% - 250px);
             left: calc(50% - 200px);
             .identifybox {
                 float: right;
                 cursor: pointer;
             }
+        }
+
+        .avatar-uploader-icon {
+            font-size: 28px;
+            color: rgba(255, 255, 255, .3);
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+            &:hover {
+                color: #fff;;
+                transition: all .1s ease;
+            }
+        }
+        .avatar {
+            width: 100px;
+            height: 100px;
+            display: block;
         }
     }
 </style>

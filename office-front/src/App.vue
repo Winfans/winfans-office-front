@@ -145,6 +145,13 @@
                 }
             }
         }
+        .avatar-uploader {
+            border: 1px solid rgba(255, 255, 255, .3);
+            &:hover {
+                transition: all .1s ease;
+                border: 1px solid #fff;
+            }
+        }
     }
 
     // CRM

@@ -69,7 +69,7 @@
                     </div>
                     <ul>
                         <!--                        <a href="http://localhost:9528/officeAdmin/#/login">-->
-                        <a href="http://www.wffanshao.top/officeAdmin/#/login">
+                        <a href="http://office-admin.wffanshao.top/#/login">
                             <li>
                                 <i class="iconfont icon-youxi  btn-top"></i>
                                 <div class="btn-box">
@@ -78,7 +78,7 @@
                                 </div>
                             </li>
                         </a>
-                        <a href="http://www.wffanshao.top/officeAdmin/#/example/table">
+                        <a href="http://office-admin.wffanshao.top/#/example/table">
                             <!--                            <a href="http://localhost:9528/officeAdmin/#/example/table">-->
                             <li>
                                 <i class="iconfont icon-feiji btn-top"></i>
@@ -89,7 +89,7 @@
                             </li>
                         </a>
                         <!--                        <a href="http://localhost:9528/officeAdmin/#/form/index">-->
-                        <a href="http://www.wffanshao.top/officeAdmin/#/form/index">
+                        <a href="http://office-admin.wffanshao.top/#/form/index">
 
                             <li>
                                 <i class="iconfont icon-huojian btn-top"></i>

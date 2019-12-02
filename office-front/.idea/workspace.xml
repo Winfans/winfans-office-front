@@ -2,17 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0914fc19-edf4-4610-a3b0-e13a9d6fc33c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/img/bg/bg.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/img/bg/bg2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/img/bg/bg3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/img/footer/qrcode.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/public/favicon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/logo.JPG" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/img/bg/bg1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/img/bg/bg1.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Login.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/NavPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/NavPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/OfficeHome.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/OfficeHome.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/NotFound.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/NotFound.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/Register.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Register.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vue.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/vue.config.js" afterDir="false" />
     </list>
@@ -41,7 +38,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/Users/WF帆少/Desktop/winfans-office-front/office-front/src/views/index/Search.vue" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/assets/img/bg" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/dist" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -55,19 +52,19 @@
     <property name="settings.editor.selected.configurable" value="web.server" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\WF帆少\Desktop\winfans-office-front\office-front\public" />
+      <recent name="C:\Users\WF帆少\Desktop\winfans-office-front\office-front\src\assets\img\bg" />
+      <recent name="C:\Users\WF帆少\Desktop\winfans-office-front\office-front\src\assets\iconfont" />
+      <recent name="C:\Users\WF帆少\Desktop\winfans-office-front\office-front\public\fullpage" />
+      <recent name="C:\Users\WF帆少\Desktop\winfans-office-front\office-front\src\views\index\search\crm" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\WF帆少\Desktop\winfans-office-front\office-front\src\assets\img\footer" />
       <recent name="C:\Users\WF帆少\Desktop\winfans-office-front\office-front\public" />
       <recent name="C:\Users\WF帆少\Desktop\winfans-office-front\office-front\public\img" />
       <recent name="C:\Users\WF帆少\Desktop\winfans-office-front\office-front\src\assets\img\bg" />
       <recent name="C:\Users\WF帆少\Desktop\winfans-office-front\office-front\src\assets\img\banner" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\WF帆少\Desktop\winfans-office-front\office-front\src\assets\img\bg" />
-      <recent name="C:\Users\WF帆少\Desktop\winfans-office-front\office-front\src\assets\iconfont" />
-      <recent name="C:\Users\WF帆少\Desktop\winfans-office-front\office-front\public\fullpage" />
-      <recent name="C:\Users\WF帆少\Desktop\winfans-office-front\office-front\src\views\index\search\crm" />
-      <recent name="C:\Users\WF帆少\Desktop\winfans-office-front\office-front\src\assets\img\notfound" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -149,17 +146,15 @@
       <workItem from="1573125004717" duration="1159000" />
       <workItem from="1573178438150" duration="13372000" />
       <workItem from="1574387959204" duration="1766000" />
-      <workItem from="1574516385431" duration="6589000" />
+      <workItem from="1574516385431" duration="6890000" />
+      <workItem from="1574581868069" duration="5040000" />
+      <workItem from="1574593842469" duration="8443000" />
+      <workItem from="1574995513092" duration="6146000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
-    <option name="exactExcludedFiles">
-      <list>
-        <option value="$PROJECT_DIR$/../../vue-admin-template/node_modules/@vue/cli-plugin-unit-jest/generator/template/tests/unit/example.spec.js" />
-      </list>
-    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">

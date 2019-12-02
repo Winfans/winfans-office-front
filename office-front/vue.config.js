@@ -2,7 +2,7 @@ module.exports = {
     // 是否打包sourcemap
     productionSourceMap: false,
     //部署应用包时的基本 URL
-    publicPath: '/office',
+    publicPath: '/',
     pwa: {
         iconPaths: {
             favicon32: 'favicon.ico',
